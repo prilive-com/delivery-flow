@@ -49,9 +49,14 @@ governing line — **cut what a brief repeats, never what a reviewer can see** �
 step 4 beside it, and two repositories would only recreate the problem the flow spends most of its
 effort on: a fact fixed in one document and left stale in its twin.
 
-It carries measured numbers from one real slice, not estimates. Read section 1 first: it says which
-claims were verified against a source and which were not, and the unverified ones are used for
-nothing.
+It carries measured numbers from one real slice, not estimates — and **section 0 is where to start**,
+because it is a list of what the previous revision got wrong. The first measurement the document
+demanded falsified two of the document's own headline figures: a cache field had never been read, and
+it turned out to be 93% of everything that ever entered the model.
+
+Every saving claim has been withdrawn until the attribution in section 3 exists. A number here is
+either measured, or marked `UNAVAILABLE`, or an estimate with its method written down. A zero that
+means "we did not look" is the failure the whole section exists to prevent.
 
 ## Scope
 
