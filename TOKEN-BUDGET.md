@@ -1,7 +1,7 @@
 # TOKEN BUDGET - MACHINE-WIDE
 
-**Revision 2.** Import this from your agent's always-loaded instruction file, so it applies to every
-agent you run, in every repository.
+**Status: IN FORCE, operator decision 2026-09-11. Revision 2, same day.** Imported from
+`~/.claude/CLAUDE.md`, so it applies to every agent on this machine, in every repository.
 
 **The governing rule, unchanged and overriding everything below:**
 

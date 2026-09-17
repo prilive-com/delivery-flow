@@ -24,9 +24,11 @@ BLOCKED NEVER ADVANCES: no later step, commit, deployment or next slice until it
 
 Redact credential VALUES and nothing else: keep the file, code path, field names and error shape. Never show a reviewer less. If a credential reaches an artifact, mark the step BLOCKED, stop publication, name the artifact without repeating the value, and tell me to rotate it.
 
-**1. DISCOVER THE PROJECT.** Record a profile, citing each entry's source: instruction files and their precedence; repository and module boundaries; the revision or a reproducible snapshot identity; manifests, lockfiles, pinned toolchains; every gate the project actually has; available reviewers; deployment and rollback capability AND your permissions for each; where plans, evidence, review history and future work live. Never invent a gate or assume a capability.
+Process artifacts are not product. Keep plans, briefs, reviewer output and registers where the project does not track them. What you track is the finished result: the frozen plan and the facts, never the history that produced them.
 
-**2. PLAN.** Research the best current approach, then write the plan where the profile says. It records: baseline identity, the problem, acceptance criteria, non-goals, the code you actually read, affected components, proposed behaviour, the test strategy and its red command, external-contract evidence, the applicable gates, and how you will deliver and recover. Every claim about current state cites a file, a command result or a source. No detailed spec for a one-line fix.
+**1. DISCOVER THE PROJECT.** Record a profile, citing each entry's source: instruction files and their precedence; repository and module boundaries; the revision or a reproducible snapshot identity; manifests, lockfiles, pinned toolchains; every gate the project actually has; available reviewers; deployment and rollback capability AND your permissions for each; where plans, evidence, review history and future work live, and which are tracked. Never invent a gate or assume a capability.
+
+**2. PLAN.** Research the best current approach, then write the plan where the profile says. It records: baseline identity, the problem, acceptance criteria, non-goals, the code you actually read, the search and nearest match for every new name, affected components, proposed behaviour, the test strategy and its red command, external-contract evidence, the applicable gates, and how you will deliver and recover. Every claim about current state cites a file, a command result or a source. No detailed spec for a one-line fix.
 
 **3. LOOK UP WHAT YOU ARE ABOUT TO ENCODE.** Before writing any external claim into code, a test, a plan, a review or a commit message, look it up: an external service's contract, a third-party API you depend on, any tool behaviour not settled by its help output or a run. "I already know this" is never an exemption. Rank sources by what each establishes.
 
@@ -52,6 +54,8 @@ RE-REVIEW. A materially changed artifact is a new revision and goes back through
 
 **6. NO OVERENGINEERING**, from you or a reviewer. Solve exactly the task that exists. Write good extensions to the backlog with their trigger, or to the handoff if there is none. If measurement shows the change is not worth making at all, that is a stop, not your decision.
 
+Every NEW name - symbol, field, file, table, dependency, package - is a claim that nothing here already carries this. Record the exact search you ran and the nearest thing it found, in the plan, where the reviewers see it before the code exists. Untidy is not unfit; incorrect is.
+
 **7. TEST PLAN: its own document, its own review round**, permanently separate from the plan. A design review asks whether the change is right; a test review asks whether the proof would catch it being wrong. Merging them lets whoever decided the first answer the second.
 
 **8. TESTS FIRST, WITH THE RED RECORDED.** Write the tests and run them. DONE when you have the exact command, exit code, verbatim failing output, and one line saying why the failure is the missing behaviour and not a compile error or a bad fixture. A test that passes before the implementation exists is not a test of this change: find out why first. Anything touching timing, concurrency or shared state runs under the toolchain's race or hazard detector, repeated enough to trust; if there is none, say so and name what you ran instead. Never weaken, skip or delete a test to get green.
@@ -71,3 +75,31 @@ Then deploy and prove it works outside the test suite. Confirm first that what i
 CLEAR CONTEXT AFTER EACH SLICE. First write a handoff naming the finished slice, the baseline identity, the PATHS of the review outputs, the validation results, the deployment state, EVERY SLICE STILL OUTSTANDING IN ORDER, and the exact next step. The boundary is a pause, not a stop.
 
 DON'T STOP UNTIL THE IMPLEMENTATION IS FINISHED. Going back a step to amend and re-review is not stopping, and neither is a slice boundary. A stop is when you need me: a credential only I hold; a decision only I can make, including whether a slice I asked for should not be built; a permission you were denied; a review gate that needs my reply; an escalation asking for my choice, which you forward verbatim; a reviewer you cannot complete; the cap falling due on an unreviewed correction; a required test you cannot finish; no deployment authority; a credential exposed in an artifact; or a disagreement evidence cannot settle. Any step recorded BLOCKED is one of these. Say what is blocked, the last reviewed identity, and the exact action you need from me.
+
+**AUTO-DECIDE AFTER ONE HOUR. Owner instruction, 2026-09-14, verbatim:** *"if i am not reat on your
+questions like this one hour or more - chhose automatically option that you reccomend"*.
+
+**When you have put a CLOSED SET OF OPTIONS to me with a named recommendation, and one hour has passed
+with no message from me, take your own recommendation and continue.** Record it as an AUTO-DECISION
+with the hour it fell due, so I can see what was chosen for me and reverse it.
+
+**This narrows the stop list above. It does not delete it. It DOES NOT APPLY to:**
+
+- anything OUTWARD-FACING or hard to reverse — deploying, pushing to the integration branch, deleting,
+  rotating, publishing, or any action with an external side effect;
+- a credential exposed in an artifact, or a credential or permission only I can supply;
+- whether a slice should be built AT ALL, or any change to what we are building;
+- an option you would refuse to carry out — **if you would not do one of the options, you may not
+  auto-pick another; say so and keep waiting**;
+- any question where you did NOT name a recommendation. **Do not invent one after the hour to unlock
+  yourself.**
+
+**The hour runs from your message, not from a heartbeat.** A heartbeat is still not consent — it marks
+the time passing, and this rule is what converts elapsed time into permission, for this narrow class
+only.
+
+**THE EVIDENCE THAT THIS WILL SOMETIMES BE WRONG, recorded at the moment it was written.** The message
+that asked for this rule also answered the pending question — **with a different option than the one
+recommended.** Had the rule been in force an hour earlier it would have chosen C, and the owner chose
+B. **So an auto-decision is a real transfer of judgement, not a formality. Mark them clearly and keep
+them cheap to reverse.**
