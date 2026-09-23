@@ -1,6 +1,6 @@
 # THE DELIVERY FLOW: MANDATORY, NOT ADVISORY
 
-Applies to every implementation, fix, refactor, pipeline change and deployment, in every project and language. You may not skip, reorder or compress a step. The state table is the only way a step is excused.
+Applies to every implementation, fix, refactor, pipeline change and deployment, in every project and language. You may not skip, reorder or compress a step. The state table is the only way a step is excused - except under `dsf`, at the end of this flow, which says when it is on and which steps it drops.
 
 This flow decides WHETHER a step is required and WHAT COUNTS AS DONE. The project decides HOW IT IS SPELLED: commands, paths, gates, integration branch, backlog. Read its instruction files first. On a command or a path, the project wins. If one would remove a step, this flow wins and that conflict is a stop. If the project does not answer such a question, find the answer once and write it there.
 
@@ -132,26 +132,39 @@ them cheap to reverse.**
 main developing flow - dsf - do the simpler flow - it`s mean that if I write it in task flow should be
 simpler - only one final review and only final tests"*.
 
-**When it applies.** When I write `dsf` in a task. Also when a project's queue or backlog marks an item for
-"a simpler flow" on my order. Nothing else turns it on: you never choose it for yourself.
+**When it is on.** When I write `dsf` in a task. When a project's queue or backlog marks an item for "a
+simpler flow" on my order. **And ALWAYS for a docs-only change.** Owner, 2026-09-23, verbatim: *"can you
+add that for documentations, instructions we always should use dsf"*. A change is docs-only when it changes
+only prose: documentation, READMEs, instruction and rule files, plans, registers, queues, and comments. It is
+NOT docs-only if it changes code, tests, configuration (permission settings, CI and build files included),
+or an example that a test or an operator runs as it is, such as a config block or a command. If a docs-only
+slice turns out to need such a change, it leaves `dsf` for the full flow, unless I wrote `dsf`. Nothing else
+turns `dsf` on: you never choose it for yourself. Record which of these turned it on, in the plan and in the
+MR.
 
-**What `dsf` drops:**
+**What `dsf` drops - and nothing else:**
 
-- the plan review rounds (steps 4-5). Still write a short plan (step 2): the problem, the change, the files.
-  It is for you and for the one review below;
+- the plan review rounds (steps 4-5 for the plan). Write a short plan instead (step 2): the problem, the
+  change, the files, and step 6's search and nearest match for every new name. The final review reads it;
 - the separate test plan and its review round (step 7);
-- tests first (step 8). Write the tests with the change, not before it. No red is recorded;
-- re-review after fixes (the RE-REVIEW rule and its cap).
+- tests FIRST and the recorded red (the order in step 8). Write the tests with the change. Step 8's other
+  rules stay: never weaken, skip or delete a test to get green, and run anything that touches timing,
+  concurrency or shared state under the race detector, repeated;
+- every review before the final one, and every review after it: the RE-REVIEW rule, its cap, the two clean
+  rounds of PRODUCT CONVERGENCE, and step 9's "re-review" of an unplanned change (add it to the short plan
+  instead). So a fix made after the one review round is not the stop "the cap falling due on an unreviewed
+  correction";
+- a project's own rule that requires one of these steps, such as a recorded red.
 
-**What `dsf` keeps, unchanged:**
+**What `dsf` keeps: everything else, unchanged.** In particular:
 
-- slices, and steps 1 (discover), 3 (look up what you encode), 6 (no overengineering) and 9 (implement);
 - **the final tests:** every gate the project has (step 10), on the final change set. Run them before the
   review, and again after any fix;
 - **ONE final review round** (step 11) on the final change set, frozen, with the reviewer legs step 4
-  calls for. Fix what it finds that is really wrong. The fixes are not reviewed again: the MR lists each one as
-  "fixed after the review, not re-reviewed";
-- delivery (step 12): an MR, merged only on my word, and the proof outside the test suite;
-- BLOCKED, the stop list, AUTO-DECIDE and the credential rules.
+  calls for. Ask it both questions: is the change right, and would its tests catch it being wrong? Every
+  finding still gets ACCEPT, REJECT or DEFER with evidence, as step 5 says. Fix what is really wrong. The
+  fixes are not reviewed again: the MR lists each one as "fixed after the review, not re-reviewed",
+  together with any file such a fix adds;
+- delivery (step 12) and its proof.
 
 **`dsf` is less process, not less honesty.** A dropped step is recorded as "dsf: not run", never as PASS.
