@@ -127,3 +127,31 @@ that asked for this rule also answered the pending question — **with a differe
 recommended.** Had the rule been in force an hour earlier it would have chosen C, and the owner chose
 B. **So an auto-decision is a real transfer of judgement, not a formality. Mark them clearly and keep
 them cheap to reverse.**
+
+**`dsf` — DO THE SIMPLER FLOW. Owner instruction, 2026-09-23, verbatim:** *"Can we add an alias in our
+main developing flow - dsf - do the simpler flow - it`s mean that if I write it in task flow should be
+simpler - only one final review and only final tests"*.
+
+**When it applies.** When I write `dsf` in a task. Also when a project's queue or backlog marks an item for
+"a simpler flow" on my order. Nothing else turns it on: you never choose it for yourself.
+
+**What `dsf` drops:**
+
+- the plan review rounds (steps 4-5). Still write a short plan (step 2): the problem, the change, the files.
+  It is for you and for the one review below;
+- the separate test plan and its review round (step 7);
+- tests first (step 8). Write the tests with the change, not before it. No red is recorded;
+- re-review after fixes (the RE-REVIEW rule and its cap).
+
+**What `dsf` keeps, unchanged:**
+
+- slices, and steps 1 (discover), 3 (look up what you encode), 6 (no overengineering) and 9 (implement);
+- **the final tests:** every gate the project has (step 10), on the final change set. Run them before the
+  review, and again after any fix;
+- **ONE final review round** (step 11) on the final change set, frozen, with the reviewer legs step 4
+  calls for. Fix what it finds that is really wrong. The fixes are not reviewed again: the MR lists each one as
+  "fixed after the review, not re-reviewed";
+- delivery (step 12): an MR, merged only on my word, and the proof outside the test suite;
+- BLOCKED, the stop list, AUTO-DECIDE and the credential rules.
+
+**`dsf` is less process, not less honesty.** A dropped step is recorded as "dsf: not run", never as PASS.
