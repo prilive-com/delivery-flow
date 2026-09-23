@@ -392,8 +392,12 @@ that provider** and must be reconsidered rather than kept on principle.
 
     WARN  ->  allow the leg to finish  ->  stop before the next round  ->  operator decides
 
-A reviewer that cannot complete makes the round **INCOMPLETE, never complete-with-a-note**. A kill
-switch tuned before a distribution exists is a machine for manufacturing INCOMPLETE rounds on
+A reviewer that cannot complete makes the round **DEGRADED, and the degradation is recorded**
+rather than hidden - `DELIVERY-FLOW.md` step 4 is the authority: report the leg, its family and
+the reason, and continue on the legs that remain, down to a floor of one. **SUPERSEDED
+2026-09-17:** this paragraph previously read *"INCOMPLETE, never complete-with-a-note"* and made
+such a round a blocker. It no longer blocks; it still may never be reported as a full round. A
+kill switch tuned before a distribution exists is a machine for manufacturing stopped rounds on
 schedule.
 
 **No thresholds are set here.** Section 11 says when they may be.

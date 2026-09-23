@@ -10,7 +10,9 @@ part that does not change.
 ## Composition
 
 **One leg per model family. A second leg from a family already represented is one opinion counted
-twice.** Three families is the working minimum; a round with fewer is INCOMPLETE and says so.
+twice.** The machine profile names how many legs a round runs and the order in which families fill
+the seats - for example two legs: the author's own family always, plus the first family in an
+ordered list whose probe passes. A substitute only replaces a missing leg; it never adds an opinion.
 
 **Use the newest model each family offers, and where the tool has a reasoning-effort setting, at
 an effort you have decided and written down.** Resolve both at run time rather than pinning a name.
@@ -76,10 +78,14 @@ leg quotes something from it back.
 
 ## When a leg fails
 
-Restart it. If it fails again, try another interface in the same family. If it still will not run,
-the review is **INCOMPLETE — not complete-with-a-note**, and a round is never done when a leg failed
-during it. Record the failure with its evidence, so a later reader can judge whether the round can
-be trusted.
+Restart it. If it fails again, try another interface in the same family, then the family the profile
+names as the substitute. If it still will not run, **report the leg, its family and the reason at
+once, and continue the round with the legs that remain.** That is a recorded degradation, never a
+silent one and never a stop: every artifact carrying the round's verdict says how many legs ran and
+which were missing. **The floor is one leg**; zero is a stop. A one-leg round that shares the author's
+family is the weakest review this flow can produce, and says so. Record the failure with its
+evidence, so a later reader can judge whether the round can be trusted. An unavailable leg is a
+state, not a verdict: probe it again at the start of the next slice.
 
 A refusal is not always about your repository: the same leg may refuse a brief phrased as *build a
 working bypass* and answer the same substance phrased as *name the limits of this check*. Reword in
