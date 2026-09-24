@@ -130,7 +130,10 @@ them cheap to reverse.**
 
 **`dsf` — DO THE SIMPLER FLOW. Owner instruction, 2026-09-23, verbatim:** *"Can we add an alias in our
 main developing flow - dsf - do the simpler flow - it`s mean that if I write it in task flow should be
-simpler - only one final review and only final tests"*.
+simpler - only one final review and only final tests"*. **Corrected by the owner on 2026-09-24, verbatim:**
+*"Can you correct dsf flow - tests before code should be stay but review should be only one in final;"*. So
+tests still come FIRST, with the red recorded. What `dsf` shrinks is the reviews - to one, at the end - and the
+plan and the test plan, which become one short plan.
 
 **When it is on.** When I write `dsf` in a task. When a project's queue or backlog marks an item for "a
 simpler flow" on my order. **And ALWAYS for a docs-only change.** Owner, 2026-09-23, verbatim: *"can you
@@ -145,19 +148,20 @@ MR.
 **What `dsf` drops - and nothing else:**
 
 - the plan review rounds (steps 4-5 for the plan). Write a short plan instead (step 2): the problem, the
-  change, the files, and step 6's search and nearest match for every new name. The final review reads it;
+  change, the files, step 6's search and nearest match for every new name, and the test strategy with its red
+  command. The final review reads it;
 - the separate test plan and its review round (step 7);
-- tests FIRST and the recorded red (the order in step 8). Write the tests with the change. Step 8's other
-  rules stay: never weaken, skip or delete a test to get green, and run anything that touches timing,
-  concurrency or shared state under the race detector, repeated;
 - every review before the final one, and every review after it: the RE-REVIEW rule, its cap, the two clean
   rounds of PRODUCT CONVERGENCE, and step 9's "re-review" of an unplanned change (add it to the short plan
   instead). So a fix made after the one review round is not the stop "the cap falling due on an unreviewed
   correction";
-- a project's own rule that requires one of these steps, such as a recorded red.
+- a project's own rule that requires one of these steps, such as a separate test-plan review.
 
 **What `dsf` keeps: everything else, unchanged.** In particular:
 
+- **tests first, with the red recorded: step 8, in full and unchanged.** That holds for every piece of code,
+  including a fix made after the review and an unplanned change: its failing test comes first. For a docs-only
+  change there is no code, so step 8 is recorded as NOT TRIGGERED, not as "dsf: not run";
 - **the final tests:** every gate the project has (step 10), on the final change set. Run them before the
   review, and again after any fix;
 - **ONE final review round** (step 11) on the final change set, frozen, with the reviewer legs step 4
