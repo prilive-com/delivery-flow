@@ -6,6 +6,8 @@ This flow decides WHETHER a step is required and WHAT COUNTS AS DONE. The projec
 
 Split the work into slices: one scope each, independently testable and revertible. Never mix a refactor, a dependency upgrade and a behaviour change. One scope per document too. Finish one slice before starting the next.
 
+**MR SIZE: RELATED TESTS HAVE THEIR OWN BUDGET. Owner decision, 2026-09-29, verbatim:** *"Ok, let`s increase in main flow for related tests mr up to 1200 lines"*, then *"Hm, let`s increase to 2000"*. Where a project's size rule counts tests, count an MR's changed lines (added plus deleted) in two budgets. Related tests - the test files and test data that exercise this MR's change - may take up to 2,000 lines; above that, split. In an MR with no production code, its tests are its change, so they are related tests. Everything else - production code, scripts, configuration, documents, and a test helper that no test in this MR uses - keeps the project's own size rule. The project's exceptions (generated code, mechanical renames and the like) apply to both budgets. Record both counts in the MR. The measurement behind it is small (one project's merge history, 2026-09-29: size predicted more review rounds, not more escapes), so the recorded counts are what will show whether 2,000 is right.
+
 Every step ends in one recorded state. Record them as a table: step, state, artifact, one line of evidence, no gaps. The state is a lookup, not a judgement:
 
 ```
