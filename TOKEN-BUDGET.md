@@ -112,6 +112,16 @@ output:
 share, and therefore their true context volume, is **UNAVAILABLE**. Record it that way. Do not
 assume their composition resembles family B's.
 
+**CORRECTED 2026-10-07 (FT-119): A and C DO decompose; the table describes only what each CLI
+PRINTS.** Codex writes one `token_usage_record` per model call into its rollout file
+(`~/.codex/sessions/...`): input (which INCLUDES cached), cached, cache write, output (which
+INCLUDES reasoning), total. Claude Code writes per-message usage into its transcripts: input (which
+EXCLUDES cache), cache creation, cache read, output, thinking (which is INSIDE output; not every
+message reports it). The printed numbers mean less than
+they seem: codex `tokens used` = fresh + output (no cache); Claude `subagent_tokens` = the LAST
+message's context size, not the leg's spend. `~/.claude/bin/legmeter.py collect` reads the files
+(section 3.1).
+
 ### 2.2 The slice, stated honestly
 
 | family | reported | what that number IS |
@@ -122,6 +132,10 @@ assume their composition resembles family B's.
 
 **A single slice total is not reportable**, because two of the three numbers do not mean the same
 thing as the third. Revision 1 added them anyway. That is the error section 0 retracts.
+
+**CORRECTED 2026-10-07 (FT-119):** A's 620,486 is a sum of codex `tokens used` lines (fresh +
+output, no cache), and C's 1,387,610 is a sum of final-context sizes — neither is a spend, so a
+new decomposed row is NOT comparable with them (on FT-68's 15 Claude legs it is 23-44 times larger for C).
 
 ### 2.3 The one attribution measurement that exists
 
@@ -149,6 +163,22 @@ revision 1 is withdrawn until section 11's data exists.
 
 One row per leg per round, appended to the token log beside the instruction files. Every field is
 recorded as a number, as `UNAVAILABLE`, or as an estimate **with its method named**.
+
+**The log and its writer (FT-119 step 1, 2026-10-07):** `~/.claude/leg-telemetry.csv`, written by
+`~/.claude/bin/legmeter.py collect --repo R --slice S --reviews <slice review folder> --session <main
+transcript> [--session ...] --since T --until T` — **run it at each slice's end, before the handoff,
+after every leg folder sits in its round.** `--session` is required, and every session must come from
+one project folder (legs are searched there). One row per attempt (each codex attempt, each probe, each
+Claude leg), one per main-session window, one per session for its non-leg subagents; a run it cannot
+trust stops and writes nothing. Column meanings that differ by row: `total_reported` = the tool's
+own total including cache for new codex rows, `UNAVAILABLE` for new Claude rows (Claude reports no
+total); the 4 rows from 2026-09-11/12 hold agy fresh + output (rows 1-2), codex `tokens used` = fresh
++ output (row 3) and Claude's last-message context (row 4). Families: new rows `openai` and
+`anthropic` (an agy or grok artifact stops the run in step 1); the old rows `A`/`B`/`C`.
+`sent_brief_bytes` = the size of the brief the attempt's first task message names. The older
+hand-written `~/.claude/token-log.csv` is frozen.
+The extra columns (`source`, `attempt`, `duration_s`, `cost`, `quota_consumption`, `method`, ...)
+come after the list below.
 
     # identity - see section 12 for why each is here
     date, repo, slice, round, family, model_served, effort, cli_version,
@@ -186,6 +216,8 @@ recorded as a number, as `UNAVAILABLE`, or as an estimate **with its method name
 
    **This subtraction is wrong if the provider does not resend the whole prefix every step**, so it
    is valid only for families whose stream shows per-step context. For A and C: `UNAVAILABLE`.
+   (2026-10-07: their files do decompose — section 2.1's correction — but the prefix and brief
+   byte estimates are not collected yet, so this field stays `UNAVAILABLE` in FT-119 step 1.)
 
 3. **`file_reads_repeated_unchanged`** - count reads of a path whose content hash is unchanged since
    the previous read in the same session. Measured, not estimated, where the stream records reads.
