@@ -190,10 +190,11 @@ MR.
   change, the files, step 6's search and nearest match for every new name, the experience lines used (step 2),
   and the test strategy with its red command. The final review reads it;
 - the separate test plan and its review round (step 7);
-- every review before the final one, and every review after it: the RE-REVIEW rule, its cap, the two clean
+- every review before the final TWO, and every review after them: the RE-REVIEW rule, its cap, the two clean
   rounds of PRODUCT CONVERGENCE, and step 9's "re-review" of an unplanned change (add it to the short plan
-  instead). So a fix made after the one review round is not the stop "the cap falling due on an unreviewed
+  instead). So a fix made after the SECOND review round is not the stop "the cap falling due on an unreviewed
   correction";
+
 - a project's own rule that requires one of these steps, such as a separate test-plan review.
 
 **What `dsf` keeps: everything else, unchanged.** In particular:
@@ -203,11 +204,22 @@ MR.
   change there is no code, so step 8 is recorded as NOT TRIGGERED, not as "dsf: not run";
 - **the final tests:** every gate the project has (step 10), on the final change set. Run them before the
   review, and again after any fix;
-- **ONE final review round** (step 11) on the final change set, frozen, with the reviewer legs step 4
-  calls for. Ask it both questions: is the change right, and would its tests catch it being wrong? Every
-  finding still gets ACCEPT, REJECT or DEFER with evidence, as step 5 says. Fix what is really wrong. The
-  fixes are not reviewed again: the MR lists each one as "fixed after the review, not re-reviewed",
-  together with any file such a fix adds;
+- **TWO final review rounds** (step 11) on the final change set, frozen, with the reviewer legs step 4
+  calls for. **Owner decision, 2026-10-23, verbatim:** *"Let`s correct dsf regime in our main flow for 2
+  review rounds instead of one"*. It replaces the single round `dsf` carried until that date.
+
+  Ask each round both questions: is the change right, and would its tests catch it being wrong? Every
+  finding still gets ACCEPT, REJECT or DEFER with evidence, as step 5 says. Fix what is really wrong.
+
+  **The second round is what the first one cannot be: a review of the FIXES.** Round 1's corrections go
+  into the change set and round 2 reviews them like any other code. That closes the gap a single round
+  leaves, where every fix ships unread. **Round 2 is frozen on the corrected change set**, and it is a
+  delta round: give it the delta, its blast radius, and a one-line disposition ledger of round 1.
+
+  **Only round 2's own fixes are unreviewed**, and the MR lists each one as "fixed after the second
+  review, not re-reviewed", together with any file such a fix adds. **Two clean rounds are not required**
+  - that is PRODUCT CONVERGENCE, which `dsf` still drops. Two rounds happen, then the slice delivers;
+
 - delivery (step 12) and its proof.
 
 **`dsf` is less process, not less honesty.** A dropped step is recorded as "dsf: not run", never as PASS.
