@@ -63,6 +63,10 @@ Keep live/shared resources and required evidence, and record cleanup results and
 anything retained. A blocked or READY_FOR_DEPLOYMENT handoff updates the same report with the real
 state, kept resources, next responsible actor/action and cleanup condition; resume it when proof succeeds.
 Cancelled or abandoned work records that outcome and uses the same retention and safe-cleanup rules.
+Use `dsf` for this completion phase even after a full-flow task. Reuse its plan and completed gate/review
+evidence; keep its required delivery proof and all retention and cleanup safeguards.
+When no tracked content changes, this phase needs no new slice, MR or review cycle; record it in
+the task report. A tracked edit follows its own flow, review and delivery rules.
 
 **Independent means one leg per model family**, on the same frozen artifact, with full access,
 separate outputs and no conversation between legs. Resolve the newest model at run time; where
@@ -107,6 +111,7 @@ permissions, scope decisions, an option the agent would refuse, or no recommenda
 ## The simpler flow: `dsf`
 
 `dsf` is on at the owner's request (also through the queue), and always for prose-only changes.
+The final report and cleanup phase also uses `dsf`, including after a full-flow task.
 Runnable examples are not docs-only. The agent may choose `dsf` for simple work of a few commands.
 Shipping code, tests, configuration, process or launcher scripts, step 6's approval list, outward-facing
 or hard-to-reverse work are not simple. If in doubt, use the full flow. Record the trigger in the plan and MR.
