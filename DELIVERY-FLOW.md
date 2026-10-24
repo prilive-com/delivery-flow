@@ -122,6 +122,8 @@ behaviour the change removed is a defect the change created, and leaving it is h
 
 **FINAL IMPLEMENTATION REPORT AND CLEANUP. Owner instruction, 2026-10-24.** Apply this at each completed slice and again when the whole task is finished, in the full flow and in `dsf`. Passing tests alone is not completion: first satisfy the required gates, reviews, delivery and verification above. At a blocked or READY_FOR_DEPLOYMENT stop, update the same working-plan report with the real state, kept resources, the next responsible actor/action and the condition for cleanup. Keep the material still needed to finish or investigate the work. The resuming agent updates that report and revisits cleanup when the missing proof succeeds. For cancelled or abandoned work, record that outcome and use the same retention and safe-cleanup rules without claiming successful delivery.
 
+**Use `dsf` for the final report and cleanup phase, including after a task that used the full flow.** Reuse the existing task plan and evidence. When this phase changes no tracked content, do not start a new slice, MR or cycle of project checks or reviews solely for completion facts and verified cleanup. Any tracked edit is outside this completion phase and follows the flow, review and delivery rules for that edit. The main task must still pass its own required tests, reviews, delivery and verification. All evidence-retention and safe-cleanup rules below still apply. This includes report readback, ownership/current-use checks and post-cleanup verification.
+
 **Update the implementation plan with the final implementation report.** Define its durable retained working-plan/report path before review; use persistent project storage, not a temporary directory. Keep it available to the intended follow-up agents. Draft known implementation facts in the plan before final review; append observed delivery, verification and cleanup facts afterward as a dated revision. If the frozen plan is tracked, include those known facts and a stable pointer to the retained working copy outside the tracked tree before the final review freeze, and finalize the report there. The pointer and handoff give the access or restore steps needed by future agents. Any later tracked edit still follows the existing review/delivery rules; do not create a new implementation slice solely to record observed completion facts in the retained working copy. Keep the exact reviewed/frozen plan bytes and their recorded identity before updating the working plan; do not rewrite the original intent to make it fit the result. Keep earlier report revisions in retained evidence when later work changes the result. At whole-task completion use the task plan, or, if there is none, the final slice's retained working plan with a consolidated outcome and an index of all slice reports. The report must give a future agent enough context to correct or extend the task without its old conversation or disposable working folders. Scale detail to the actual change; for a category that does not apply, say none or NOT TRIGGERED and why. Include:
 
 - the original goal, scope and acceptance criteria; what was actually delivered and how its behavior differs from the baseline;
@@ -192,7 +194,7 @@ simpler - only one final review and only final tests"*. **Corrected by the owner
 tests still come FIRST, with the red recorded. What `dsf` shrinks is the reviews - to one, at the end - and the
 plan and the test plan, which become one short plan.
 
-**When it is on.** When I write `dsf` in a task. When a project's queue or backlog marks an item for "a
+**When it is on.** Step 12's final report and cleanup phase always uses `dsf`, even after a full-flow task (owner instruction, 2026-10-24); the main task keeps its own flow. When I write `dsf` in a task. When a project's queue or backlog marks an item for "a
 simpler flow" on my order. **And ALWAYS for a docs-only change.** Owner, 2026-09-23, verbatim: *"can you
 add that for documentations, instructions we always should use dsf"*. A change is docs-only when it changes
 only prose: documentation, READMEs, instruction and rule files, plans, registers, queues, and comments. It is
@@ -205,7 +207,7 @@ when asked whether to reverse the earlier rule that you never choose it: *"a. Ye
 ships, a test, configuration, a process or launcher script, anything on step 6's approval list, or anything
 **outward-facing or hard to reverse** - the same class the auto-decide exclusions name. When in doubt it is
 not simple. Nothing else turns `dsf` on. Record which of these turned it on, in the plan and in the
-MR.
+MR. For step 12's completion phase with no tracked content changes, record the trigger in the existing task report instead of a new MR.
 
 **What `dsf` drops - and nothing else:**
 
