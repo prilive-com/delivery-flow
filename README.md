@@ -50,6 +50,20 @@ they go green, every project gate category gets its own result, and the complete
 final review. Deliver through a merge or pull request, define rollback before deployment, and
 prove the result. Docs-only delivery records "docs only, no runtime surface".
 
+At each completed slice and at task completion, after the required checks, reviews, delivery and
+proof, finalize a dated implementation report in the plan's retained working copy. Define that
+durable path before review. A tracked plan includes known facts and a pointer to a retained working
+copy outside the tracked tree before the final review freeze. That pointer and the handoff give
+access or restore steps. Post-merge facts go in that copy without repeated report-only merges.
+Keep the reviewed plan bytes and
+the source, decisions, check evidence, deployment/rollback facts and follow-up instructions needed
+to return to the task. After saving and verifying those records, remove the task's no-longer-needed
+temporary files, isolated caches, builds and test resources. Check ownership and current use first.
+Keep live/shared resources and required evidence, and record cleanup results and reasons for
+anything retained. A blocked or READY_FOR_DEPLOYMENT handoff updates the same report with the real
+state, kept resources, next responsible actor/action and cleanup condition; resume it when proof succeeds.
+Cancelled or abandoned work records that outcome and uses the same retention and safe-cleanup rules.
+
 **Independent means one leg per model family**, on the same frozen artifact, with full access,
 separate outputs and no conversation between legs. Resolve the newest model at run time; where
 effort can be set, choose and record it. Check what actually answered. A clean exit alone is not
@@ -97,12 +111,13 @@ Runnable examples are not docs-only. The agent may choose `dsf` for simple work 
 Shipping code, tests, configuration, process or launcher scripts, step 6's approval list, outward-facing
 or hard-to-reverse work are not simple. If in doubt, use the full flow. Record the trigger in the plan and MR.
 
-Write one short plan. There is no plan review or separate test-plan review, and exactly one final
-review round with the normal reviewer legs. Tests still come first with the red recorded; for
-docs-only work step 8 is NOT TRIGGERED. Run every project gate before review and after any fix.
-Fixes after the review are listed as "fixed after the review, not re-reviewed". Re-review, its cap
-and the two clean rounds do not apply. Delivery and its proof stay. Dropped steps are "dsf: not run",
-never PASS.
+Write one short plan, including temporary resources, safe-removal checks and the retained
+working-plan/report and evidence paths. There is no plan review or separate test-plan review.
+There are exactly two final review rounds with the normal reviewer legs. Tests still come first
+with the red recorded; for docs-only work step 8 is NOT TRIGGERED. Run every project gate before
+review and after any fix. Fixes after the second round are listed as "fixed after the second review,
+not re-reviewed". Re-review, its cap and the two clean rounds of product convergence do not apply.
+Delivery and its proof stay. Dropped steps are "dsf: not run", never PASS.
 
 ## On the token budget
 
