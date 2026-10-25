@@ -28,9 +28,9 @@ Context7 for documentation discovery and Playwright for browser proof. Discovery
 claim INFERRED; a version-exact source is needed for VERIFIED. Another real browser driver can
 supply browser proof; a component test cannot.
 
-**Then write a local reviewer-tooling file that this repository deliberately does not contain**:
-which families are primary or substitutes, how many legs run, the tools, paths and tiers, and how
-each fails. Record invocations, validity checks and availability probes. Name its path in the
+**Then write a complete local reviewer-tooling profile**: the actual families and seats, tools,
+paths, tiers, invocation and failure handling on your machine. This repository gives the
+maintainer's current policy as an example below; it does not contain that machine's full profile. Record invocations, validity checks and availability probes. Name its path in the
 project's instruction file and load it the same way. Keep it local — accounts and quotas belong
 to your machine. `TOOLING.md` is the reference, never that profile.
 
@@ -38,6 +38,32 @@ The flow decides **whether** a step is required and **what counts as done**. You
 **how it is spelled** — commands, paths, gates, integration branch. Where they conflict on a command
 or a path, the project wins. Where the project would remove a step, the flow wins and the conflict
 is a stop.
+
+## Maintainer's current reviewer policy
+
+This is the maintainer's current machine policy, not a vendor requirement of the portable flow.
+An adopter sets their own policy in the local profile. The maintainer's order, set on 2026-10-25, is **Claude first and Codex second**. A round has two
+reviewer seats. The maintainer records this policy in the local reviewer-tooling file; account
+details, commands, live quotas and shared state stay on that machine.
+
+Read the current Codex account quota before each reviewer attempt and round. Use the lowest
+remaining percentage across its applicable windows. **Below 15% remaining**, keep Codex in
+reserve and use **Grok, then agy** if Grok cannot return a valid review. Exactly 15% does not
+start reserve. Once reserve starts, keep that mode across sessions until every window that caused
+it has fresh evidence of its own full reset to **100%** (a full reading or explicit provider proof
+of a full refill before later usage), and no applicable window is still
+below 15%. Then return to Codex before the next reviewer launch. A partial recovery, a different
+window's reset, or an expected/advanced reset time alone is not enough. Shared use can hide the
+full reading; keep reserve and record that evidence gap if a full reset cannot be proved.
+
+Remaining quota is 100 minus the service's used percentage. It is not context capacity.
+Keep the account/window identities and reset evidence in a shared retained handoff, with safe
+updates by concurrent agents. Unknown data or a service denial is not numeric proof of low quota or a full reset. A failed
+fresh read never permits Codex. Restore lost state, or use a fresh same-account read showing all
+applicable windows at 100%, to recover normal mode.
+Grok and agy are eligible only in reserve mode. If no eligible second reviewer can run,
+record the missing seat and continue with Claude alone; do not spend the Codex reserve.
+Keep the existing validity, effort, family and zero-reviewer stop rules.
 
 ## What it is for
 
@@ -114,7 +140,8 @@ permissions, scope decisions, an option the agent would refuse, or no recommenda
 The final report and cleanup phase also uses `dsf`, including after a full-flow task.
 Runnable examples are not docs-only. The agent may choose `dsf` for simple work of a few commands.
 Shipping code, tests, configuration, process or launcher scripts, step 6's approval list, outward-facing
-or hard-to-reverse work are not simple. If in doubt, use the full flow. Record the trigger in the plan and MR.
+or hard-to-reverse work are not simple. If in doubt, use the full flow. Record the trigger in the plan
+and MR, or in the existing task report for completion work with no tracked content change.
 
 Write one short plan, including temporary resources, safe-removal checks and the retained
 working-plan/report and evidence paths. There is no plan review or separate test-plan review.
