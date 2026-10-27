@@ -56,6 +56,84 @@ drives a real browser satisfies step 12; if none is available, the UI slice cann
 its exit condition and that is BLOCKED. What is never acceptable is substituting a
 weaker proof - a passing component test - and calling the step done.
 
+## Complexity and duplication reports — steps 2, 9 and 10
+
+The design questions in step 2 and this trial take selected ideas from
+[ub-mode](https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/SKILL.md),
+inspected on 2026-10-27. The delivery flow remains the authority for tests,
+review, scope and MR delivery. This adopts a checklist and a trial protocol;
+it does not install or activate the upstream skill or tools.
+
+**Start with one project.** Run the trial as a named, authorized project slice.
+Step 6's scope and RELEASE CANDIDATE FIRST rules still apply.
+Check its existing tools first. Use a small representative area and compare a
+known baseline with the final source. Include relevant existing code when looking
+for new duplicates, so copying an old function into a new file is visible.
+Record the language, supported paths, exclusions and any code the tool cannot see.
+An unsupported area is unmeasured, never a clean result.
+
+Before running, record the chosen tool's exact version or commit under step 3,
+its commands, the source/coverage revision, the report paths and numeric limits
+for time, memory, workers and temporary disk use. Respect the project's existing
+container and resource rules. Use task-owned working space away from another
+agent's active tree. Check install side effects and dependencies first; selecting
+a trial does not grant permission to change shared tools or project dependencies.
+Both metric tools write `.metrics` reports; confine those writes to task-owned space.
+
+Check that the report detects a known complex function and a known duplicate
+pair. Keep those control inputs and outputs as evidence. Record the measured
+scores beside any proposed thresholds and their exact comparators. Review each
+candidate before changing code: similar structure can express different rules,
+and a lower score alone does not prove better behavior. Keep tests for behavior.
+
+The trial report records useful findings, false warnings, changes made, elapsed
+time, peak memory and temporary disk use, with commands and evidence. Mark a
+measurement UNAVAILABLE when it was not captured. Retain the source identities,
+coverage inputs and full reports, then use step 12's ownership/current-use checks
+to remove only the trial's disposable resources. Recommend adopt, adjust or drop
+from those results. Making a tool or threshold a required project gate is an
+explicit owner decision recorded in the project profile; this protocol alone
+does not make it required. Existing gates keep their rules.
+
+Companion tools are candidates, not a required bundle. These are source-review
+findings for the linked revisions, not proof that they run in a given project:
+
+- [crapper](https://github.com/unclebob/crapper/blob/6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d/README.md)
+  combines function complexity with test coverage. Without a threshold, a high
+  score does not fail the command. Its threshold comparison is strictly `>`:
+  a threshold of 10 accepts 10, whereas the upstream skill asks for `< 10`.
+  Use current coverage from the measured source. A missing or failed coverage
+  run must be recorded separately; a metric report is not proof that tests ran.
+  The tool scores missing or failed coverage as 0% and still writes the report.
+  Check the coverage command's own result before relying on the scores.
+  With coverage disabled, CRAP is unavailable and its threshold cannot fire.
+  Default coverage runs execute tests, remove old reports and can install
+  packages or tools. Check existing-coverage or custom-coverage options first.
+  Confine report writes and installs to task-owned space, and inspect ignored
+  and untracked files as well as manifest changes after a run.
+- [dryer](https://github.com/unclebob/dryer/blob/66ff6d21a42c04afcad89c78a80066176d1294b0/README.md)
+  reports structural similarity. Its default is 0.82, while the skill calls for
+  acting at 0.8. A successful report exits 0 even with duplicate candidates.
+  Read the findings; exit 0 does not mean no duplicates. Do not force unrelated
+  code into one abstraction to meet a number.
+- [mutator](https://github.com/unclebob/mutator/blob/a5a0cb803b66e0cdb8bf471b3b08af701d424a41/README.md)
+  is a separate option for mutation testing. Its inspected version counts
+  compilation failures and timeouts as kills, and caches kills for unchanged
+  function text. Those results alone do not meet step 10's mutation rules,
+  including test changes, full final runs and valid kills. Any later use needs
+  its own project validation. The complexity/duplication trial does not add it.
+  It also skips uncovered sites, defaults to one worker per core and can restore
+  an interrupted older run's backup into the real tree before a new run.
+
+All three inspected tools list Clojure, Java, Go, TypeScript, Rust and Python
+support. Only crapper and mutator also list JavaScript; that dryer revision does
+not discover JavaScript files. None lists PHP support. Check the chosen version's
+actual support and run controls before relying on it, including for Laravel
+projects.
+
+**Without them:** keep the existing gates and design review. An unadopted
+advisory trial is not a missing required capability and does not block delivery.
+
 ## Reviewers — steps 4 and 11
 
 **Reviewers are the one capability whose instances are NOT listed here.** A documentation

@@ -44,6 +44,15 @@ Process artifacts are not product. Keep plans, briefs, reviewer output and regis
 
 Name the temporary resources the task will create, how their ownership and safe removal will be checked, and where the final implementation report and retained evidence will live.
 
+**CHECK THE DESIGN WHERE IT CHANGES.** For software changes, including configuration and scripts, answer these questions in the existing plan, including the short `dsf` plan. Keep the answers brief and in proportion to the change. Cite the affected paths and the intended checks. For a question that does not apply, give the reason.
+
+- Where does outside data enter, and where is it checked? Can the existing data types prevent an invalid state?
+- Can the changed business logic be checked apart from storage, network calls and other side effects, with a small local change?
+- What happens if the operation runs twice, is retried, or stops halfway through? Where repeat safety is needed, how is it proved?
+- Do concurrent actors need the same mutable state? Keep independent state separate; where sharing is needed, name its ownership and how updates stay safe.
+
+Use the answers to improve the planned change within its scope. Clear existing code can stay. These questions do not require a rewrite or new infrastructure; step 6 still decides scope.
+
 **3. LOOK UP WHAT YOU ARE ABOUT TO ENCODE.** Before writing any external claim into code, a test, a plan, a review or a commit message, look it up: an external service's contract, a third-party API you depend on, any tool behaviour not settled by its help output or a run. "I already know this" is never an exemption. Rank sources by what each establishes.
 
 A run establishes what THIS BUILD does. Run anything executable in the tree; record version, environment, command, result. It outranks documentation and every reviewer about the machine you are on, never about a remote service. For a pinned dependency, read the locked source your build compiles.
@@ -104,6 +113,8 @@ Every NEW name - symbol, field, file, table, dependency, package - is a claim th
 **9. IMPLEMENT** the minimum reviewed design. If it needs an unplanned file, symbol, dependency, config field or behaviour: stop, amend the plan and test strategy, redo the affected lookups, re-review - except where step 6's approval list reserves it for me, which you cannot settle alone. DONE when the change matches the recorded scope, or every deviation has a disposition. Then make one pass whose only goal is finding code this slice added that should be deleted, inlined or replaced with reuse. Reviewers are the last to notice absence.
 
 **10. GATES BEFORE EYES.** Run every category the project HAS: format; the full test suite; the concurrency detector; type and static analysis; the linter; dependency vulnerability and provenance; dead code; and a production build of EVERY CONFIGURATION THAT SHIPS. Each gets its OWN state; never bundle them into one result that can be neither honestly PASS nor honestly NOT TRIGGERED. Pin the toolchain to the version the project declares: a result from a newer one is not evidence about a project targeting an older one. Where a category has no runnable command, that absence is itself a finding: record the ad-hoc command and its output, and never report a category as covered by a target that does not exist. DONE when commands, versions, exit codes and output are recorded. "It passed for me" is not a result.
+
+**OPTIONAL COMPLEXITY AND DUPLICATION TRIALS.** Reuse the project's existing checks first. `TOOLING.md` describes an optional trial on one project, with measured findings and resource use. Until the owner explicitly adopts a new required check, that trial is advisory: its absence is not BLOCKED, and its results replace none of the required gates or reviews. The project records the owner's decision and any adopted command, scope and success criterion in its profile. There is no shared numeric threshold.
 
 **A REPORT OF SUCCESS IS NOT EVIDENCE OF SUCCESS. RE-READ THE ARTIFACT.** Your own script saying it applied a fix, your own generator printing a gate record, your own harness reporting a pass - none of those is the thing itself. **Measured FIVE times in one slice:** a `printf` placeholder sat where an exit code should have been; a patch script wrote the file before two later edits ran and printed both as applied; a falsification test reported the attack still passing because the patcher had a missing argument and had patched nothing; another patcher wrote literal newlines and left the checker unparseable; and a gate record was generated before the change was staged, so it described the previous revision. Every one was caught the same way - by running the thing and reading the file - and not one was caught by the message the tool printed.
 
@@ -212,7 +223,8 @@ MR. For step 12's completion phase with no tracked content changes, record the t
 **What `dsf` drops - and nothing else:**
 
 - the plan review rounds (steps 4-5 for the plan). Write a short plan instead (step 2): the problem, the
-  change, the files, step 6's search and nearest match for every new name, the experience lines used (step 2),
+  change, the files, step 2's design answers for software changes, step 6's search and nearest match
+  for every new name, the experience lines used (step 2),
   the test strategy with its red command, the task's temporary resources and safe-removal checks, and the
   retained working-plan/report and evidence paths. The final review reads it;
 - the separate test plan and its review round (step 7);

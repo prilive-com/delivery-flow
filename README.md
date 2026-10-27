@@ -8,7 +8,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `DELIVERY-FLOW.md` | the flow: twelve steps, what each requires, and what counts as DONE |
 | `REVIEWING.md` | how to run the reviewer legs steps 4 and 11 require |
 | `TOKEN-BUDGET.md` | measured review costs, corrections, and rules for cutting waste without cutting the review |
-| `TOOLING.md` | documentation and browser tools, reviewer capabilities, and what is lost without them |
+| `TOOLING.md` | documentation and browser tools, optional complexity/duplication trials, reviewer capabilities, and what is lost without them |
 | `token-economy-common.md` | a generic design for context, evidence storage, telemetry, and token, cost and quota control |
 | `README.md` | this map and the adoption notes |
 
@@ -119,6 +119,18 @@ an exact version. Untouched pins stay put. Step 3 defines the defect and compati
 an explicit owner pin wins. Existing dependency upgrades get their own slice. AI model choice
 and reviewer effort follow their own policies.
 
+Step 2 also asks four design questions where software changes: input checks and
+data types, logic apart from side effects, retries and partial failure, and safe
+ownership of shared state. Record answers or reasons that a question does not
+apply in the existing plan, also in `dsf`. Clear existing code can stay; step 6
+still limits scope.
+
+`TOOLING.md` describes an optional complexity/duplication trial on one project,
+inspired by selected `ub-mode` ideas. Measure useful and false findings, time,
+memory and disk use before deciding to adopt a project gate. There is no global
+score requirement or automatic tool installation. Existing tests, reviews and
+delivery rules still apply.
+
 **MR SIZE** gives related tests up to 2,000 changed lines, added plus deleted, where the project's
 size rule counts tests. Everything else keeps the project's budget; its exceptions apply to both.
 Record both counts in the merge request and split related tests above their budget.
@@ -143,7 +155,8 @@ Shipping code, tests, configuration, process or launcher scripts, step 6's appro
 or hard-to-reverse work are not simple. If in doubt, use the full flow. Record the trigger in the plan
 and MR, or in the existing task report for completion work with no tracked content change.
 
-Write one short plan, including temporary resources, safe-removal checks and the retained
+Write one short plan, including step 2's design answers for software changes, temporary
+resources, safe-removal checks and the retained
 working-plan/report and evidence paths. There is no plan review or separate test-plan review.
 There are exactly two final review rounds with the normal reviewer legs. Tests still come first
 with the red recorded; for docs-only work step 8 is NOT TRIGGERED. Run every project gate before
