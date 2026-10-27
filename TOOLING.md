@@ -64,7 +64,9 @@ inspected on 2026-10-27. The delivery flow remains the authority for tests,
 review, scope and MR delivery. This adopts a checklist and a trial protocol;
 it does not install or activate the upstream skill or tools.
 
-**Start with one project.** Run the trial as a named, authorized project slice.
+**Start with one project.** Choose a useful trial within already authorized
+project work and record its scope in the plan. Use a separate slice only when
+the existing flow rules require one.
 Step 6's scope and RELEASE CANDIDATE FIRST rules still apply.
 Check its existing tools first. Use a small representative area and compare a
 known baseline with the final source. Include relevant existing code when looking
@@ -90,10 +92,13 @@ The trial report records useful findings, false warnings, changes made, elapsed
 time, peak memory and temporary disk use, with commands and evidence. Mark a
 measurement UNAVAILABLE when it was not captured. Retain the source identities,
 coverage inputs and full reports, then use step 12's ownership/current-use checks
-to remove only the trial's disposable resources. Recommend adopt, adjust or drop
-from those results. Making a tool or threshold a required project gate is an
-explicit owner decision recorded in the project profile; this protocol alone
-does not make it required. Existing gates keep their rules.
+to remove only the trial's disposable resources. Choose adopt, adjust or drop
+from those results, then act on the supported choice within the approved scope.
+You may adopt a project check through the normal test, review and delivery
+rules without a separate owner question. Record the reason, evidence, command,
+scope and success criterion in the project profile. Step 6 still applies to any
+actual scope or permission boundary. An optional trial alone does not pause
+current work. Existing gates keep their rules.
 
 Companion tools are candidates, not a required bundle. These are source-review
 findings for the linked revisions, not proof that they run in a given project:

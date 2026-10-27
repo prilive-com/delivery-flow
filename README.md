@@ -127,9 +127,11 @@ still limits scope.
 
 `TOOLING.md` describes an optional complexity/duplication trial on one project,
 inspired by selected `ub-mode` ideas. Measure useful and false findings, time,
-memory and disk use before deciding to adopt a project gate. There is no global
-score requirement or automatic tool installation. Existing tests, reviews and
-delivery rules still apply.
+memory and disk use, then let the agent choose and record the supported action
+within already authorized work. Routine design, test and project-check decisions
+need no separate owner approval. Existing scope, test, review, delivery and real
+blocker rules still apply. There is no global score requirement or automatic
+tool installation.
 
 **MR SIZE** gives related tests up to 2,000 changed lines, added plus deleted, where the project's
 size rule counts tests. Everything else keeps the project's budget; its exceptions apply to both.
