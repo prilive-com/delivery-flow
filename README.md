@@ -42,9 +42,31 @@ is a stop.
 ## Maintainer's current reviewer policy
 
 This is the maintainer's current machine policy, not a vendor requirement of the portable flow.
-An adopter sets their own policy in the local profile. The maintainer's order, set on 2026-10-25, is **Claude first and Codex second**. A round has two
+An adopter sets their own policy in the local profile. The maintainer's preferred pair is
+**Claude first and Codex second**, set on 2026-10-25 and clarified on 2026-10-28. A round has two
 reviewer seats. The maintainer records this policy in the local reviewer-tooling file; account
 details, commands, live quotas and shared state stay on that machine.
+
+| preferred seat | when to use a fallback | fallback order |
+|---|---|---|
+| Claude | its account quota is exhausted | Grok, then agy |
+| Codex | its existing below-15% reserve rule applies | Grok, then agy |
+
+Keep usable preferred reviewers first. Fill only eligible empty seats, in seat
+order, skipping any family already used. If both are limited, use Grok + agy;
+one family never fills both seats. Do not wait for a reset or ask for approval.
+Return each preferred reviewer before its next launch after its own confirmed
+full reset to 100%; keep any valid review already running or completed.
+
+Claude's quota state is separate from Codex's. Use fresh provider usage/limit
+evidence, with the account and affected windows recorded. A cached reading,
+context meter, usage-read error or expected reset time is not proof of quota
+exhaustion or a full reset. Keep proven reserve until every affected window has
+fresh full-reset evidence. If that evidence is not available, keep the fallback
+and continue; record the gap and report it once after the expected reset time.
+That report is not an approval stop. A real account usage-limit rejection of a
+Claude turn can start reserve; it cannot prove a reset. Claude has no new 15%
+trigger in this correction.
 
 Read the current Codex account quota before each reviewer attempt and round. Use the lowest
 remaining percentage across its applicable windows. **Below 15% remaining**, keep Codex in
@@ -61,8 +83,9 @@ Keep the account/window identities and reset evidence in a shared retained hando
 updates by concurrent agents. Unknown data or a service denial is not numeric proof of low quota or a full reset. A failed
 fresh read never permits Codex. Restore lost state, or use a fresh same-account read showing all
 applicable windows at 100%, to recover normal mode.
-Grok and agy are eligible only in reserve mode. If no eligible second reviewer can run,
-record the missing seat and continue with Claude alone; do not spend the Codex reserve.
+Grok and agy may replace either quota-blocked seat under the table above. If a
+seat cannot be filled, record it and continue with the eligible families left;
+do not spend the Codex reserve or count a fallback twice. Zero valid legs is a stop.
 Keep the existing validity, effort, family and zero-reviewer stop rules.
 
 ## What it is for

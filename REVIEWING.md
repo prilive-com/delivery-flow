@@ -19,6 +19,14 @@ an effort you have decided and written down.** Resolve both at run time rather t
 Confirm from the tool's own output which model answered, and at which effort — never from the flag
 you passed.
 
+**A quota fallback replaces a seat, not the whole pair.** Keep eligible preferred
+families first, then fill quota-blocked seats from the profile's fallback order,
+skipping any family already used in that round. If both preferred families are
+limited, use two distinct eligible fallbacks when available. Restore each
+preferred family at its next launch after its own reset criterion is met; keep a
+valid review already running or completed. Do not wait for a reset while valid
+reviewer legs remain. Record missing seats under the existing degradation rule.
+
 **Never put legs in conversation with each other.** Within a round, no leg sees another's output.
 Across rounds the corrections travel; that is re-review, not debate.
 
