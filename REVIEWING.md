@@ -5,8 +5,9 @@ independent reviewer run: one model family. A **round** is one launch of every l
 same frozen artifact.
 
 The selected flow sets the number of rounds, not the number of reviewer legs.
-Default `dmf` runs exactly two rounds at each stage: implementation
-plan, separate test plan, and final changes. `dsf` runs only two final rounds.
+Default `dmf` runs two required rounds, with a third for a material change to
+what the stage reviewed after round 2, at each stage: implementation plan, separate test plan,
+and final changes. Each stage has its own cap of three. `dsf` runs only two final rounds.
 Full flow keeps its original cap and convergence rules. Use DELIVERY-FLOW.md
 for selection, later corrections and amendments; the family and validity rules
 below apply in every mode.
@@ -104,7 +105,7 @@ state, not a verdict: probe it again at the start of the next slice.
 
 A refusal is not always about your repository: the same leg may refuse a brief phrased as *build a
 working bypass* and answer the same substance phrased as *name the limits of this check*. Reword in
-the next round the selected mode allows (in full flow, a new round within its cap); never silently rerun or add a round beyond the selected mode's budget. If no round remains in `dmf` or `dsf`, record that leg as unavailable and follow the degradation rule above; continue with other valid legs. Zero valid legs still stops.
+the next round the selected mode allows (in full flow, a new round within its cap); never silently rerun or add a round beyond the selected mode's budget. If the selected mode opens no further round (in `dmf`, bookkeeping or a refusal alone does not open round 3), record that leg as unavailable and follow the degradation rule above; continue with other valid legs. Zero valid legs still stops.
 
 ## Reading the round
 
