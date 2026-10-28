@@ -175,25 +175,41 @@ permissions, scope decisions, an option the agent would refuse, or no recommenda
 
 | mode | plan review | separate test-plan review | final change review |
 |---|---|---|---|
-| `dmf` — do medium flow (default) | exactly 2 rounds | exactly 2 rounds | exactly 2 rounds |
+| `dmf` — do medium flow (default) | 2–3 rounds | 2–3 rounds | 2–3 rounds |
 | `dsf` — do the simpler flow | dropped | dropped | exactly 2 rounds |
 | full flow | original re-review rules | original re-review rules | original re-review rules |
 
 A round uses the normal reviewer legs; it is not one reviewer. `dmf` keeps the
 full twelve steps, full plan, separate test plan, tests before code, all gates,
-delivery proof and cleanup. Each stage has its own two-round budget. Round 2
+delivery proof and cleanup. Each stage has two required rounds and its own cap of three. Round 2
 reviews round 1's corrections. If round 1 changed nothing, round 2 is a fresh
 whole-artifact review with its ledger. All three `dmf` stages stay required even
 for explicitly selected `dmf` on prose: the separate test plan covers document checks. Two clean rounds and
 the full-flow five-round cap do not apply to `dmf`.
 
-Resolve findings and run the required checks. List corrections after round 2 in
-the plan, relevant register and MR as "fixed after the second review, not
-re-reviewed", with their stage, paths and checks. This adds no third round or
-approval wait solely because of the budget. In-scope amendments update the plan
-and test strategy, use remaining stage rounds, and disclose later changes to
-closed stages in the remaining reviews. Do not reset budgets to buy more rounds.
-Real blockers, scope limits, reviewer validity and tests-first still apply.
+Resolve findings and run the required checks. Any material change to the reviewed scope, design,
+test strategy, code or proof claims after round 2, from review fixes, gate results
+or the author, requires round 3 on the corrected
+artifact and its delta. Otherwise the stage finishes after two rounds. A refusal
+or missing leg alone uses existing retry/degradation rules, not an extra round. Recording counts, dispositions, evidence paths and later observed facts that do
+not change those decisions or claims is bookkeeping; it does not trigger round 3.
+Existing retained-report and tracked-edit delivery rules still apply. A later material in-scope amendment to a stage that
+closed at two uses its remaining third round before advancing with it or delivering
+it. Record each stage's actual count, cap and reason in the plan, finding register, MR
+and final report: six to nine rounds in total.
+The owner raised the `dmf` cap on 2026-10-28; completed rounds and valid reviews stay.
+Before the next launch or stage advance in an undelivered slice, use an unused
+third round for any currently unreviewed material change after round 2, even one
+made before this update. Keep its old marker as history and append the new review
+result. Already delivered tasks are not reopened solely for the new budget.
+
+List material corrections after round 3 in the plan, relevant register and MR as "fixed
+after the third review, not re-reviewed", with their stage, paths and checks. The
+cap adds no fourth round or approval wait solely because the budget ended.
+In-scope amendments update the plan and test strategy, use remaining stage rounds,
+and disclose changes after the cap to remaining stages. Do not reset budgets to
+buy more rounds. Real blockers, scope limits, reviewer validity and tests-first
+still apply. `dsf` keeps its two final rounds; full flow keeps its original cap.
 
 An explicit owner mode for the current task wins, including for documents. A
 specific owner-approved project regime or owner-ordered queued mode remains unless
