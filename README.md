@@ -1,6 +1,6 @@
 # delivery-flow
 
-A mandatory 12-step delivery flow for AI-assisted software work, with `dsf` for simpler work,
+A mandatory 12-step delivery flow for AI-assisted software work, with `dmf` as the default and `dsf` for simpler work,
 independent reviewer rules, and token-budget rules that cut repetition while keeping full access.
 
 | file | what it is |
@@ -94,7 +94,7 @@ Ordinary engineering discipline, written down so an agent cannot skip it. Work i
 scope each, independently testable and revertible. Every step gets a recorded state and evidence;
 BLOCKED never advances. A missing reviewer leg is reported degradation; zero legs is a stop.
 
-The full flow reviews the plan and a separate test plan before implementation. Tests go red before
+The default `dmf` and the full flow review the plan and a separate test plan before implementation. Tests go red before
 they go green, every project gate category gets its own result, and the complete change gets a
 final review. Deliver through a merge or pull request, define rollback before deployment, and
 prove the result. Docs-only delivery records "docs only, no runtime surface".
@@ -112,7 +112,7 @@ Keep live/shared resources and required evidence, and record cleanup results and
 anything retained. A blocked or READY_FOR_DEPLOYMENT handoff updates the same report with the real
 state, kept resources, next responsible actor/action and cleanup condition; resume it when proof succeeds.
 Cancelled or abandoned work records that outcome and uses the same retention and safe-cleanup rules.
-Use `dsf` for this completion phase even after a full-flow task. Reuse its plan and completed gate/review
+Use `dsf` for this completion phase even after a `dmf` or full-flow task. Reuse its plan and completed gate/review
 evidence; keep its required delivery proof and all retention and cleanup safeguards.
 When no tracked content changes, this phase needs no new slice, MR or review cycle; record it in
 the task report. A tracked edit follows its own flow, review and delivery rules.
@@ -126,7 +126,7 @@ to break the map's unproved claims. The map never limits access.
 
 **PRODUCT CONVERGENCE** ends full-flow review after two consecutive rounds with zero findings in
 the tracked change set. Findings in gitignored process artifacts go to the backlog with a trigger;
-they do not buy more rounds. The default cap is five rounds per artifact. A cap never turns an
+they do not buy more rounds. In full flow, the cap is five rounds per artifact. A cap never turns an
 unreviewed correction into a reviewed one; reaching it with such a correction is a stop.
 
 **RELEASE CANDIDATE FIRST** limits scope while an app or service cannot yet run and do its main
@@ -171,13 +171,58 @@ after an hour with no owner message. Record the choice and when it fell due. The
 hold: external effects or hard-to-reverse actions, exposed credentials, owner-only credentials or
 permissions, scope decisions, an option the agent would refuse, or no recommendation. Harness changes are excluded.
 
+## Flow modes: `dmf` is the default
+
+| mode | plan review | separate test-plan review | final change review |
+|---|---|---|---|
+| `dmf` — do medium flow (default) | exactly 2 rounds | exactly 2 rounds | exactly 2 rounds |
+| `dsf` — do the simpler flow | dropped | dropped | exactly 2 rounds |
+| full flow | original re-review rules | original re-review rules | original re-review rules |
+
+A round uses the normal reviewer legs; it is not one reviewer. `dmf` keeps the
+full twelve steps, full plan, separate test plan, tests before code, all gates,
+delivery proof and cleanup. Each stage has its own two-round budget. Round 2
+reviews round 1's corrections. If round 1 changed nothing, round 2 is a fresh
+whole-artifact review with its ledger. All three `dmf` stages stay required even
+for explicitly selected `dmf` on prose: the separate test plan covers document checks. Two clean rounds and
+the full-flow five-round cap do not apply to `dmf`.
+
+Resolve findings and run the required checks. List corrections after round 2 in
+the plan, relevant register and MR as "fixed after the second review, not
+re-reviewed", with their stage, paths and checks. This adds no third round or
+approval wait solely because of the budget. In-scope amendments update the plan
+and test strategy, use remaining stage rounds, and disclose later changes to
+closed stages in the remaining reviews. Do not reset budgets to buy more rounds.
+Real blockers, scope limits, reviewer validity and tests-first still apply.
+
+An explicit owner mode for the current task wins, including for documents. A
+specific owner-approved project regime or owner-ordered queued mode remains unless
+the current task overrides it; keep its recorded artifacts and cap behavior
+within its scope. Automatic prose-only `dsf` stays unless the owner expressly
+included prose in that exception or chose a mode for the current task.
+Agent-written "full flow" labels from standing binary `dsf`/full rules that
+only mean "not dsf", generic full-flow boilerplate and older general full-over-`dsf`
+preferences use this newer default for new slices. A specific owner
+choice of the full review regime stays full.
+Otherwise prose-only tasks and eligible simple work keep `dsf`. All other work,
+including big tasks, uses `dmf`. Ask for "full flow" to use the original cap,
+re-review and convergence rules. Record the selected mode and trigger in the
+plan and MR. Slices already running when this rule takes effect keep their recorded mode
+unless the owner changes it, including their mode's own eligibility checks.
+When automatic prose-only `dsf` gains executable work, record its real state and
+continue in a new software slice within the authorized task, `dmf` by default.
+Keep the prose review history; it does not count as software-stage reviews.
+The software slice gets its own plan, test-plan and final-change reviews. This
+is new executable scope, not a budget reset for the same scope.
+Step 12's report and cleanup phase always uses `dsf`.
+
 ## The simpler flow: `dsf`
 
-`dsf` is on at the owner's request (also through the queue), and always for prose-only changes.
-The final report and cleanup phase also uses `dsf`, including after a full-flow task.
+Use the selection order above. Without an explicit owner mode, `dsf` stays on for prose-only changes. The owner can also request it directly or through the queue.
+The final report and cleanup phase also uses `dsf`, including after a `dmf` or full-flow task.
 Runnable examples are not docs-only. The agent may choose `dsf` for simple work of a few commands.
 Shipping code, tests, configuration, process or launcher scripts, step 6's approval list, outward-facing
-or hard-to-reverse work are not simple. If in doubt, use the full flow. Record the trigger in the plan
+or hard-to-reverse work are not simple. If in doubt, use the default `dmf`, unless the owner selected another mode. Record the trigger in the plan
 and MR, or in the existing task report for completion work with no tracked content change.
 
 Write one short plan, including step 2's design answers for software changes, temporary
