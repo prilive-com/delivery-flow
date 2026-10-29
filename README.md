@@ -14,9 +14,31 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `docs/DFLOW-PILOT.md` | optional read-only token telemetry, study findings, limits and next steps |
 | `dflow/` | the standard-library Python telemetry command |
 | `tests/` | synthetic tests for the telemetry reader |
+| `.python-version` | the telemetry tool's declared Python 3.15.2 interpreter |
 
 In `DELIVERY-FLOW.md`, **I** and **me** are the person who adopts the flow; **you** is the agent
 working for them.
+
+## Current state (2026-10-29)
+
+The delivery rules are in use. The repository also has an optional `dflow`
+telemetry tool, delivered in [PR #21](https://github.com/prilive-com/delivery-flow/pull/21).
+The tool reads saved logs. Agents still follow the flow documents and their local
+tooling profile for planning, reviews, checks and delivery.
+
+| part | current state |
+|---|---|
+| Delivery flow | Active. `dmf` is the default, with two required rounds and up to three per stage. `dsf` has two final rounds. See [the mode table](#flow-modes-dmf-is-the-default). |
+| Reviewer policy | The maintainer prefers Claude, then Codex, with quota fallbacks. Each adopter defines a local profile. See [the policy below](#maintainers-current-reviewer-policy). |
+| `dflow telemetry` | Delivered, optional and read-only. It reports token volume from saved Claude and Codex logs. See [the pilot guide](docs/DFLOW-PILOT.md). |
+| Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
+| Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
+| Execution engine, phases 1 and 2 | Deferred. The state store, workflow guards, job supervision, gate/review runners and owner ledger are not part of the delivered tool. |
+| Later rollout decisions | Identity separation, sandbox adoption, new sessions, parallel gates and instruction packs keep their separate decisions and evidence requirements. |
+
+The pilot has not proved a reduction in model calls, tokens, cost or end-to-end
+time. [The study and next steps](docs/DFLOW-PILOT.md#checks-evidence-and-next-work)
+explain its limits. `token-economy-common.md` remains a design document.
 
 ## Using it
 
