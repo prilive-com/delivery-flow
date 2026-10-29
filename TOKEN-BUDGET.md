@@ -640,3 +640,37 @@ one slice's reviews" invited exactly that comparison.
 
 **The real saving from R1-R3 is unmeasured, and stays unmeasured until it is measured on real review
 rounds.**
+
+
+## Active native-usage procedure — 2026-10-29
+
+Apply this at discovery and once at completion of a measured scope. Use the native
+log reader named by the machine profile when its supported inputs and validated
+runtime are available. The profile resolves the actual framework checkout and
+entry point; `TOOLING.md` describes the capability. The on-demand integration guide
+explains the full procedure. Existing project-specific accounting stays available.
+
+Record explicit source files, native session IDs, actor/project/slice/stage labels,
+date range, tool/source revisions and counter coverage. Labels are attribution,
+not authentication. Use stable saved records; an active log is not a completed
+session. A copied prefix must be labelled as that exact captured prefix, with its
+source path, captured byte range, hashes and coverage limits. Never drop a torn
+record to make a read succeed. Keep full original bytes and generated output in
+private retained evidence; the summary is only an index. No raw logs in Git or
+external attachments. Sanitize any derived report before sharing it outward.
+
+Keep fresh input, cache writes, cache reads and output separate. Deduplicate split
+records and replayed calls under the reader's supported native identity rules.
+Cumulative counters are checks, not extra calls; reasoning is part of output.
+Missing fields and unsupported formats remain `UNAVAILABLE`, never guessed zero.
+Report the exact source/date window and measured subtotal apart from complete
+coverage. A nonzero tool exit is a failed or partial measurement, never a complete
+one; retain the reason and full output. If no usable measurement can be obtained,
+record the unavailable fields and continue independent authorized engineering.
+That does not waive required quota checks, tests or reviewer validity.
+
+Cost requires the model's applicable price and an explicit method; quota requires
+provider evidence. Wall time and engineering quality need their own evidence.
+Do not apply one fixed cache-price multiplier to every provider or turn token
+volume into a quota estimate. Compare equivalent source/configuration/date scope,
+and report unavailable baseline/quality evidence before claiming savings.
