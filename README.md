@@ -11,6 +11,9 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `TOOLING.md` | documentation and browser tools, optional complexity/duplication trials, reviewer capabilities, and what is lost without them |
 | `token-economy-common.md` | a generic design for context, evidence storage, telemetry, and token, cost and quota control |
 | `README.md` | this map and the adoption notes |
+| `docs/DFLOW-PILOT.md` | optional read-only token telemetry, study findings, limits and next steps |
+| `dflow/` | the standard-library Python telemetry command |
+| `tests/` | synthetic tests for the telemetry reader |
 
 In `DELIVERY-FLOW.md`, **I** and **me** are the person who adopts the flow; **you** is the agent
 working for them.
@@ -273,4 +276,8 @@ size cap on this flow's always-on instructions; `TOKEN-BUDGET.md` calls its own 
 
 ## Scope
 
-These are instructions, not a framework. There is nothing to install and nothing to run.
+The delivery flow is a set of instructions. The repository also has an optional,
+read-only telemetry pilot. It runs from this checkout with Python 3.15.2 and
+measures saved Claude and Codex logs. See [the pilot guide](docs/DFLOW-PILOT.md)
+for the command, its evidence limits, and the parts of dflow that are still deferred.
+The pilot does not run or change the flow stages.
