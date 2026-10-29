@@ -5,9 +5,11 @@ and reports token volume. Run it from this checkout. The declared interpreter is
 Python **3.15.2**. The same basic TOML inputs are also tested on Python 3.12.3.
 The code uses the Python standard library on Linux.
 
-This pilot is a subset of the supplied dflow revision 5 proposal. The current
-Delivery Flow still governs the work. Adoption of an execution engine, new owner
-approval rules, and changes to always-loaded instructions remain separate work.
+This reader is a subset of the supplied dflow revision 5 proposal. The active
+Delivery Flow now includes the [execution and measurement procedure](DFLOW-INTEGRATION.md).
+The shared instruction rollout is part of that update. The execution engine and
+new owner-approval/security mechanisms remain separate work; they are not implied
+by the reader or the instruction update.
 
 ## Run it
 

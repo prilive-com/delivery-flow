@@ -40,6 +40,16 @@ Process artifacts are not product. Keep plans, briefs, reviewer output and regis
 
 **1. DISCOVER THE PROJECT.** Record a profile, citing each entry's source: instruction files and their precedence; repository and module boundaries; the revision or a reproducible snapshot identity; manifests, lockfiles, pinned toolchains; every gate the project actually has; available reviewers; deployment and rollback capability AND your permissions for each; where plans, evidence, review history and future work live, and which are tracked. Never invent a gate or assume a capability.
 
+
+**USE THE INSTALLED FLOW TOOLING. Owner update, 2026-10-29.** At discovery and
+resume, read the current shared instructions from disk and record their source
+path and revision or content hash. Read the machine profile's framework location,
+installed capabilities and measurement entry point. A published repository, an
+installed instruction copy and an active tool are separate facts: verify the
+copy this agent actually loads. Keep the current frozen round intact; use the
+flow's existing mode and amendment rules for any instruction change that applies.
+The on-demand execution and measurement procedure is listed in `TOOLING.md`.
+
 **2. PLAN.** Before planning, read the experience library's `INDEX.md` beside this file; open only the entries whose cue matches this task, cite each line you use in the plan, and treat it as a hypothesis to re-check against the files, not as a fact (see STUDY YOUR OWN WORK, step 12). Research the best current approach, then write the plan where the profile says. It records: baseline identity, the problem, acceptance criteria, non-goals, the code you actually read, the search and nearest match for every new name, affected components, proposed behaviour, the test strategy and its red command, external-contract evidence, the applicable gates, and how you will deliver and recover. Every claim about current state cites a file, a command result or a source. No detailed spec for a one-line fix.
 
 Name the temporary resources the task will create, how their ownership and safe removal will be checked, and where the final implementation report and retained evidence will live.
@@ -72,6 +82,17 @@ Use independent reviewers, ONE PER MODEL FAMILY: a second from a family already 
 DONE when each raw output is saved verbatim to its own file, headed with revision, date, baseline, each reviewer's model and verdict, and any degraded reviewer. A reviewer counts only if it exited cleanly, returned findings or an explicit no-findings verdict, and named the revision it reviewed; an exit code alone does not establish that. If one fails, restart it; if it fails again, try another interface in the same family, then the substitute the profile names. IF IT STILL WILL NOT RUN, TELL ME AT ONCE - naming the leg, its family and the reason - AND CONTINUE THE ROUND WITH THE LEGS THAT REMAIN. A leg that cannot run is a RECORDED DEGRADATION, not a BLOCKED step: it does not stop the slice, and it is never silent. Every artifact carrying that round's verdict states how many legs ran, which were missing, and why - a round run short is never described as a full one. THE FLOOR IS ONE: a round with no leg at all cannot happen and is a stop. A one-leg round states that it was one, and whether that leg SHARES A FAMILY WITH THE AGENT THAT WROTE THE CHANGE - which is the weakest review this flow can produce, because none of the comparison this step is built on happens at all. A LEG RECORDED UNAVAILABLE IS RE-PROBED AT THE START OF EVERY NEW SLICE, before the round is planned: availability is a STATE, not a verdict, and a leg written off from an error string stays written off long after it recovered. Probe on a free surface first - a catalogue or login call. Where no free surface can establish the seat, a MINIMAL probe that spends the least the tool allows is permitted; a review is never a probe. Two different things count as alive and the record names which: the interface is REACHABLE, and the family can RETURN A VALID REVIEW. Where a free probe establishes only the first, record the second as unknown rather than as alive. Record what the probe returned, not what the last failure said. An automatic or on-edit reviewer never substitutes for one: judge its findings, never count it, and a tool scoped to part of the tree says nothing about what it cannot see.
 
 Reviewers are deliberately NOT in conversation. Convergence is agreement, not correctness, and a finding with one author is not weaker for being alone. When two contradict each other on a fact, ask the code: run the command, read the line, write down what it says.
+
+
+**REUSE ARTIFACTS; WAIT IN THE TOOL.** Keep each brief, frozen input and full filing
+at its retained absolute path. Reuse a verified unchanged artifact instead of
+sending or regenerating it on each mechanics turn; check its identity again when
+its use requires it. Launch independent legs for the same frozen round together
+where supported. Wait on their native completion records with the tool's blocking
+wait, within that interface's wait limits, instead of repeated short model polls.
+Keep the required progress reports. A launcher exit or quiet output is not job
+completion. Collect every leg's complete evidence and close the round before
+acting on any finding. None of this reduces reviewer access or validity checks.
 
 **DO MORE IN EACH ROUND. Owner decision, 2026-10-12.** Aim for about **30% more active work per round** than a single-pass review, not more seats or more rounds. Before the freeze, make a short risk map of the affected paths and claims. For code, include the changed branches, boundary values, alternate valid inputs, constructor/codec paths, and which tests or wrong-code checks cover them; for plans and documents, include the decisions and evidence most likely to be wrong. Check the map yourself and close obvious gaps before launching. Give it to every reviewer as a guide, with the full artifact and full access unchanged. Ask each leg for its normal whole-artifact review **and a second adversarial pass** on the map: try to break the most important unproved claims, run a concrete counterexample where practical, and report all distinct findings and any areas it could not check. Do not stop the review at its first finding, count time as proof, set a finding quota, or turn the map into a limit on what a leg may inspect. Record the added pass in the brief and verdict. The freeze and separate plan and test-plan reviews still apply unless the selected mode says otherwise. The five-round cap and convergence rule apply only in full flow; `dmf` has up to three rounds per stage and `dsf` has two final rounds, as set below.
 
@@ -118,6 +139,16 @@ Every NEW name - symbol, field, file, table, dependency, package - is a claim th
 
 **10. GATES BEFORE EYES.** Run every category the project HAS: format; the full test suite; the concurrency detector; type and static analysis; the linter; dependency vulnerability and provenance; dead code; and a production build of EVERY CONFIGURATION THAT SHIPS. Each gets its OWN state; never bundle them into one result that can be neither honestly PASS nor honestly NOT TRIGGERED. Pin the toolchain to the version the project declares: a result from a newer one is not evidence about a project targeting an older one. Where a category has no runnable command, that absence is itself a finding: record the ad-hoc command and its output, and never report a category as covered by a target that does not exist. DONE when commands, versions, exit codes and output are recorded. "It passed for me" is not a result.
 
+
+**LET EXISTING COMMANDS DO THE MECHANICS.** Reuse the project's gate commands and
+native job/wait interfaces. Keep gates sequential unless the current rules already
+authorize otherwise. Record job identity, the source revision, complete logs and
+actual completion status. Use only configured category deadlines and cancellation
+rules; low CPU or old output alone does not prove a hang. Do not add a timeout,
+blind retry, supervisor service or new required gate merely to save model calls.
+An index of result paths and failure locations helps navigation; read the full
+source log whenever judgment needs it. The index never replaces evidence.
+
 **OPTIONAL COMPLEXITY AND DUPLICATION TRIALS.** Reuse the project's existing checks first. `TOOLING.md` describes an optional trial on one project, with measured findings and resource use. You may choose a trial or adopt an evidence-backed project check within already authorized work, under step 6 and the normal test, review and delivery rules. Record the reason, evidence, command, scope and success criterion in the project profile. No separate owner approval is needed for this routine decision. Until adopted, a trial is advisory: its absence is not BLOCKED, and its results replace none of the required gates or reviews. There is no shared numeric threshold.
 
 **A REPORT OF SUCCESS IS NOT EVIDENCE OF SUCCESS. RE-READ THE ARTIFACT.** Your own script saying it applied a fix, your own generator printing a gate record, your own harness reporting a pass - none of those is the thing itself. **Measured FIVE times in one slice:** a `printf` placeholder sat where an exit code should have been; a patch script wrote the file before two later edits ran and printed both as applied; a falsification test reported the attack still passing because the patcher had a missing argument and had patched nothing; another patcher wrote literal newlines and left the checker unparseable; and a gate record was generated before the change was staged, so it described the previous revision. Every one was caught the same way - by running the thing and reading the file - and not one was caught by the message the tool printed.
@@ -134,6 +165,20 @@ Then deploy and prove it works outside the test suite. Confirm first that what i
 
 **Update the documentation this change makes stale, in the same slice.** A document that still describes
 behaviour the change removed is a defect the change created, and leaving it is how the next agent is misled.
+
+
+**MEASURE THE COMPLETED WORK.** At step 1 identify the supported usage sources and
+the installed measurement tool. At completion, follow `TOKEN-BUDGET.md`'s native
+usage procedure once for the completed scope and retain its full private output.
+Use validated stable inputs and explicit attribution and date bounds. Record
+missing, unsupported or moving inputs as `UNAVAILABLE`, with the source and reason;
+never call them zero or complete coverage. A measurement gap does not block
+independent engineering or authorize weakening a required gate. Existing reviewer,
+quota and owner-authority conditions still apply. Measurement failure never
+counts as a passed engineering check, and volume is not cost or quota savings.
+Keep owner requirements, corrections and decisions linked to the retained plan
+and handoff, including open items and existing authorization. Tooling adds no
+new approval expiry, default or per-action chat stop to the owner's delegation.
 
 **FINAL IMPLEMENTATION REPORT AND CLEANUP. Owner instruction, 2026-10-24.** Apply this at each completed slice and again when the whole task is finished, in full flow, `dmf` and `dsf`. Passing tests alone is not completion: first satisfy the required gates, reviews, delivery and verification above. At a blocked or READY_FOR_DEPLOYMENT stop, update the same working-plan report with the real state, kept resources, the next responsible actor/action and the condition for cleanup. Keep the material still needed to finish or investigate the work. The resuming agent updates that report and revisits cleanup when the missing proof succeeds. For cancelled or abandoned work, record that outcome and use the same retention and safe-cleanup rules without claiming successful delivery.
 

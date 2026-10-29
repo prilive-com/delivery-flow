@@ -209,3 +209,27 @@ Not a copy of this file. The answers for **your** machine:
 
 **Record the asymmetry.** These tools are not interchangeable. Each fails in a
 characteristic way, and knowing which predicts which kind of defect each will miss.
+
+
+## Installed execution and usage capabilities — steps 1, 4, 10 and 12
+
+The machine profile records the actual framework checkout, instruction load path,
+validated runtime and native job/wait interfaces. Read that record at discovery
+and resume. Verify installed behavior rather than inferring it from a GitHub merge
+or an experience candidate. Keep the correct project/source identity when using a
+framework tool from a different directory.
+
+The delivered `dflow telemetry` reader supplies native Claude/Codex usage reports.
+Its usage and limits are in `docs/DFLOW-PILOT.md` in the framework checkout; the
+active workflow procedure is `docs/DFLOW-INTEGRATION.md`. Follow the native-usage
+procedure in `TOKEN-BUDGET.md`. Where supported, use the reader for the completed
+scope. If the reader, runtime or supported source evidence is unavailable, record
+that gap and continue independent authorized work. The gap does not waive an
+existing required gate or reviewer/quota check. Preserve existing accounting tools.
+
+Batch independent reads and launches where the interface supports it. Reuse the
+project's existing commands and native completion waits; keep full source and log
+access, independent reviewer outputs, and sequential gates. No new global daemon,
+engine, sandbox, parallel-gate policy or approval system is implied. Future
+execution tooling must meet the current engineering rules before replacing a
+working path. These native operations implement the active procedure now.

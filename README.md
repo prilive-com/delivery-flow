@@ -11,7 +11,8 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `TOOLING.md` | documentation and browser tools, optional complexity/duplication trials, reviewer capabilities, and what is lost without them |
 | `token-economy-common.md` | a generic design for context, evidence storage, telemetry, and token, cost and quota control |
 | `README.md` | this map and the adoption notes |
-| `docs/DFLOW-PILOT.md` | optional read-only token telemetry, study findings, limits and next steps |
+| `docs/DFLOW-PILOT.md` | read-only token telemetry, study findings, limits and next steps |
+| `docs/DFLOW-INTEGRATION.md` | active workflow discovery, native execution/waits, measurement and installation checks |
 | `dflow/` | the standard-library Python telemetry command |
 | `tests/` | synthetic tests for the telemetry reader |
 | `.python-version` | the telemetry tool's declared Python 3.15.2 interpreter |
@@ -23,14 +24,17 @@ working for them.
 
 The delivery rules are in use. The repository also has an optional `dflow`
 telemetry tool, delivered in [PR #21](https://github.com/prilive-com/delivery-flow/pull/21).
-The tool reads saved logs. Agents still follow the flow documents and their local
-tooling profile for planning, reviews, checks and delivery.
+The tool reads saved logs. The active flow now discovers the installed tooling,
+reuses retained artifacts and native completion waits, and measures supported
+completed scopes. [The integration guide](docs/DFLOW-INTEGRATION.md) gives the
+procedure. Agents keep all existing planning, review, gate and delivery rules.
 
 | part | current state |
 |---|---|
 | Delivery flow | Active. `dmf` is the default, with two required rounds and up to three per stage. `dsf` has two final rounds. See [the mode table](#flow-modes-dmf-is-the-default). |
 | Reviewer policy | The maintainer prefers Claude, then Codex, with quota fallbacks. Each adopter defines a local profile. See [the policy below](#maintainers-current-reviewer-policy). |
-| `dflow telemetry` | Delivered, optional and read-only. It reports token volume from saved Claude and Codex logs. See [the pilot guide](docs/DFLOW-PILOT.md). |
+| Active execution and measurement procedure | In the flow rules. Discover installed tooling, reuse artifacts, wait natively and measure supported completed scopes. Missing measurement is recorded without a new owner stop. Install and verify actual shared instruction copies as well as publishing the source. |
+| `dflow telemetry` | Delivered and read-only. The active procedure uses supported saved logs when available. See [the pilot guide](docs/DFLOW-PILOT.md). |
 | Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
 | Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
 | Execution engine, phases 1 and 2 | Deferred. The state store, workflow guards, job supervision, gate/review runners and owner ledger are not part of the delivered tool. |
@@ -299,7 +303,9 @@ size cap on this flow's always-on instructions; `TOKEN-BUDGET.md` calls its own 
 ## Scope
 
 The delivery flow is a set of instructions. The repository also has an optional,
-read-only telemetry pilot. It runs from this checkout with Python 3.15.2 and
-measures saved Claude and Codex logs. See [the pilot guide](docs/DFLOW-PILOT.md)
+read-only telemetry pilot. It runs from this checkout with its declared Python 3.15.2 runtime and
+measures saved Claude and Codex logs. The machine profile can name a separately
+validated compatibility runtime for read-only measurement. See [the pilot guide](docs/DFLOW-PILOT.md)
 for the command, its evidence limits, and the parts of dflow that are still deferred.
-The pilot does not run or change the flow stages.
+The reader reports usage; the active flow procedure governs how agents reuse
+native tools and collect measurements. No execution engine runs the stages.

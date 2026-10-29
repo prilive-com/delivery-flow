@@ -124,3 +124,20 @@ How findings are weighed is in `DELIVERY-FLOW.md` steps 4 and 5. Two things it d
 - Tell a leg to **execute rather than reason** wherever a check is runnable, and require scratch work
   to live outside the repository.
 - Where a proof is a test, ask a leg to **build a wrong implementation that the test still passes**.
+
+
+## Execution mechanics without repeated transport
+
+Use retained absolute paths and verified artifact identities to avoid resending
+unchanged material. The brief still contains every mandatory element above; a
+pointer is a transport method, not permission to omit governing documents, context,
+controls, freeze identity or output requirements. Verify delivery through the
+interface's available evidence and the required quote-back/control answers.
+
+Launch independent legs against the same frozen inputs before examining filings.
+Use native completion waits within interface limits and collect the full filing
+and completion evidence for every leg. A file appearing, launcher exit or quiet
+process is not a verdict. Keep structural isolation and all validity/degradation
+rules. Keep missing evidence explicitly unknown; do not invent served model or
+effort proof, or count one family twice to fill a seat. Full prior review history
+remains available. Savings are measured under `TOKEN-BUDGET.md`, not assumed.
