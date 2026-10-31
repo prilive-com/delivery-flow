@@ -22,8 +22,10 @@ twice.** The machine profile names how many legs a round runs and the order in w
 the seats - for example two legs: the author's own family always, plus the first family in an
 ordered list whose probe passes. A substitute only replaces a missing leg; it never adds an opinion.
 
-**Use the newest model each family offers, and where the tool has a reasoning-effort setting, at
-an effort you have decided and written down.** Resolve both at run time rather than pinning a name.
+**Use the newest model each family offers, except for a conditional model fallback expressly
+authorized by the owner.** Apply that exception only under its stated conditions. Where effort
+can be set, choose and record it. Resolve both at run time; an owner-named fallback keeps its
+explicit model and tier rather than inheriting a persisted default.
 Confirm from the tool's own output which model answered, and at which effort — never from the flag
 you passed.
 

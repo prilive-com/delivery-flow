@@ -87,6 +87,16 @@ one family never fills both seats. Do not wait for a reset or ask for approval.
 Return each preferred reviewer before its next launch after its own confirmed
 full reset to 100%; keep any valid review already running or completed.
 
+**Last AGY model fallback (owner update, 2026-10-31).** If the normal AGY model
+is unavailable and no other eligible model can fill a missing review seat, try
+**Gemini 3.8 Flash · high** through AGY, with the model and tier set explicitly.
+Use it only when the round would otherwise have fewer than two distinct reviewer
+families. Keep usable preferred reviewers first and the existing quota/reserve
+rules; do not choose Flash when the normal pair can run. Flash fills at most one
+Google seat. Record the fallback and its actual result, then return to the normal
+selection at a later launch when it is eligible again. The local profile gives
+the exact catalogue ID and launch checks; no account default is changed.
+
 Claude's quota state is separate from Codex's. Use fresh provider usage/limit
 evidence, with the account and affected windows recorded. A cached reading,
 context meter, usage-read error or expected reset time is not proof of quota
@@ -147,8 +157,8 @@ When no tracked content changes, this phase needs no new slice, MR or review cyc
 the task report. A tracked edit follows its own flow, review and delivery rules.
 
 **Independent means one leg per model family**, on the same frozen artifact, with full access,
-separate outputs and no conversation between legs. Resolve the newest model at run time; where
-effort can be set, choose and record it. Check what actually answered. A clean exit alone is not
+separate outputs and no conversation between legs. Resolve the newest model at run time unless
+the owner's conditional model fallback applies; where effort can be set, choose and record it. Check what actually answered. A clean exit alone is not
 proof that a review happened. **DO MORE IN EACH ROUND** asks for about 30% more active work: check a risk map
 before the freeze, then ask every leg for its whole-artifact review and a second pass that tries
 to break the map's unproved claims. The map never limits access.
