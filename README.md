@@ -13,6 +13,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `README.md` | this map and the adoption notes |
 | `docs/DFLOW-PILOT.md` | read-only token telemetry, study findings, limits and next steps |
 | `docs/DFLOW-INTEGRATION.md` | active workflow discovery, native execution/waits, measurement and installation checks |
+| `docs/RESOURCE-STORAGE.md` | portable resource budgets, existing runner choices, optional work storage and safe cleanup |
 | `dflow/` | the standard-library Python telemetry command |
 | `tests/` | synthetic tests for the telemetry reader |
 | `.python-version` | the telemetry tool's declared Python 3.15.2 interpreter |
@@ -20,7 +21,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 In `DELIVERY-FLOW.md`, **I** and **me** are the person who adopts the flow; **you** is the agent
 working for them.
 
-## Current state (2026-10-29)
+## Current state (2026-11-15)
 
 The delivery rules are in use. The repository also has an optional `dflow`
 telemetry tool, delivered in [PR #21](https://github.com/prilive-com/delivery-flow/pull/21).
@@ -28,13 +29,17 @@ The tool reads saved logs. The active flow now discovers the installed tooling,
 reuses retained artifacts and native completion waits, and measures supported
 completed scopes. [The integration guide](docs/DFLOW-INTEGRATION.md) gives the
 procedure. Agents keep all existing planning, review, gate and delivery rules.
+The flow also requires full jobs to fit the available shared resources. Its
+[resource/storage guide](docs/RESOURCE-STORAGE.md) explains the portable policy.
 
 | part | current state |
 |---|---|
 | Delivery flow | Active. `dmf` is the default, with two required rounds and up to three per stage. `dsf` has two final rounds. See [the mode table](#flow-modes-dmf-is-the-default). |
 | Reviewer policy | The maintainer prefers Claude, then Codex, with quota fallbacks. Each adopter defines a local profile. See [the policy below](#maintainers-current-reviewer-policy). |
 | Active execution and measurement procedure | In the flow rules. Discover installed tooling, reuse artifacts, wait natively and measure supported completed scopes. Missing measurement is recorded without a new owner stop. Install and verify actual shared instruction copies as well as publishing the source. |
-| `dflow telemetry` | Delivered and read-only. The active procedure uses supported saved logs when available. See [the pilot guide](docs/DFLOW-PILOT.md). |
+| Resource and storage policy | Active instructions. Check the full shared budget, use a suitable existing runner, and queue heavy work when capacity is short. Docker, native controls, VMs and CI are options. An extra work disk is optional. Full tests, reviews and evidence stay required. |
+| Resource enforcement on each machine | Verify the actual provider and its scope in the local profile. The guide is not a cross-platform runner or proof of Windows, WSL or macOS runtime support. No universal zero-OOM or measured efficiency claim is made. |
+| `dflow telemetry` | Delivered, read-only and Linux-only. The portable flow does not require this optional reader on other systems. The active procedure uses supported saved logs when available. See [the pilot guide](docs/DFLOW-PILOT.md). |
 | Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
 | Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
 | Execution engine, phases 1 and 2 | Deferred. The state store, workflow guards, job supervision, gate/review runners and owner ledger are not part of the delivered tool. |
@@ -51,11 +56,32 @@ import it, whichever your tool supports. Keep it as the canonical copy and edit 
 tool needs the text inlined, generate that copy rather than editing it, and check the two still
 match.
 
+Keep the on-demand guides with the installed `TOOLING.md`, or make its links
+resolve to the same reviewed files. After an update, verify the actual loaded
+flow, tooling and guide copies. Publishing the repository alone does not update
+an agent's installed instructions.
+
 Load `REVIEWING.md` and `TOKEN-BUDGET.md` through that same instruction file. Use `TOOLING.md` as
 the capability reference; step 1 records what is actually available on your machine. It names
 Context7 for documentation discovery and Playwright for browser proof. Discovery alone leaves a
 claim INFERRED; a version-exact source is needed for VERIFIED. Another real browser driver can
 supply browser proof; a component test cannot.
+
+Record resource and storage capabilities in the existing project/machine profile.
+Use the project's tested runner and the controls available in its real execution
+environment. Admit complete work against the shared host budget, including other
+agents, VMs, containers and live apps. A missing named tool alone adds no owner
+stop; known risky work still needs a safe route. Queue work or use an approved
+sufficient runner instead of cutting tests, review context or model effort.
+
+Use disk-backed task scratch and supported native caches. A preferred work volume
+is optional and has no fixed path, size or filesystem in this flow. Verify its
+identity, access and space before use. Without one, use the normal verified disk
+path. A configured missing or full volume needs a checked allowed fallback or a
+wait. Keep required evidence durable and outside disposable cache cleanup.
+See [the guide](docs/RESOURCE-STORAGE.md) for platform differences and adoption
+checks. These are instructions to verify existing capabilities, not a new
+scheduler, daemon or automatic system configuration.
 
 **Then write a complete local reviewer-tooling profile**: the actual families and seats, tools,
 paths, tiers, invocation and failure handling on your machine. This repository gives the
@@ -313,7 +339,7 @@ size cap on this flow's always-on instructions; `TOKEN-BUDGET.md` calls its own 
 ## Scope
 
 The delivery flow is a set of instructions. The repository also has an optional,
-read-only telemetry pilot. It runs from this checkout with its declared Python 3.15.2 runtime and
+read-only telemetry pilot. This optional reader runs on Linux from this checkout with its declared Python 3.15.2 runtime and
 measures saved Claude and Codex logs. The machine profile can name a separately
 validated compatibility runtime for read-only measurement. See [the pilot guide](docs/DFLOW-PILOT.md)
 for the command, its evidence limits, and the parts of dflow that are still deferred.
