@@ -233,3 +233,14 @@ access, independent reviewer outputs, and sequential gates. No new global daemon
 engine, sandbox, parallel-gate policy or approval system is implied. Future
 execution tooling must meet the current engineering rules before replacing a
 working path. These native operations implement the active procedure now.
+
+
+## Resource and storage capabilities
+
+Use the project's tested runner and the machine's existing profile and capacity
+coordination. Docker, native group controls, VMs and CI are possible providers,
+not portable prerequisites. Verify their actual execution and storage scope.
+An extra work volume is optional. Keep complete work and required evidence.
+The on-demand [resource/storage guide](docs/RESOURCE-STORAGE.md) covers provider
+selection, ordinary-path fallback, optional volume checks and scoped cleanup.
+It defines no new daemon, runner library, configuration schema or global GC.
