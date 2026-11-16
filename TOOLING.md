@@ -21,6 +21,28 @@ and what you lose without it.
 
 ---
 
+## Choosing optional tools
+
+Context7 and Playwright MCP are optional providers. Follow the single
+[setup procedure](docs/OPTIONAL-TOOLS.md) from the framework location in the
+ordinary profile. Interactive means the operator can answer in the agent
+interface, regardless of shell TTY presence. Offer it at first interactive setup
+for undecided choices, or
+run it on operator request. Claude Code can also use `/df-setup`, **if installed**.
+Codex and other agents read the same procedure directly.
+
+Keep three facts separate: **configured** in the client, **operator-enabled** for
+a stated scope, and **usable** after a successful real capability operation.
+A listing or connection alone leaves usability unverified. Read passive metadata
+before consent; do not launch or health-check unchosen servers.
+
+Use the existing profile for scoped choices, readiness and exact changes owned
+by Delivery Flow. Reuse valid prior authorization; ask only for an operation it
+does not cover. Leave operator-managed global tooling intact after a decline.
+The client may still expose it; this procedure does not unload client metadata.
+All existing **Without it** rules still apply. Required documentation checks and
+real browser proof need a valid alternative or remain BLOCKED.
+
 ## Documentation lookup — step 3
 
 **context7 MCP server.** Resolves a library to an identifier, then returns its
@@ -195,6 +217,10 @@ family and the reason, and continue with what is left. The floor is one.
 ---
 
 ## What step 1 records
+
+Include optional-tool choices and their client/user/host/project scope, dated
+readiness, decision source, and exact owned configuration changes in that same
+profile; use the setup guide only when needed. Do not create another registry.
 
 Not a copy of this file. The answers for **your** machine:
 

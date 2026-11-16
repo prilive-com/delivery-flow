@@ -52,6 +52,18 @@ copy this agent actually loads. Keep the current frozen round intact; use the
 flow's existing mode and amendment rules for any instruction change that applies.
 The on-demand execution and measurement procedure is listed in `TOOLING.md`.
 
+**OPTIONAL TOOLS, FIRST USE.** Use the ordinary discovery profile's verified
+framework location to find `docs/OPTIONAL-TOOLS.md`. Interactive means the operator
+can answer in the agent interface; shell TTY presence alone does not decide it.
+At first interactive setup,
+offer its procedure for choices with no explicit scoped yes/no. Existing scoped
+operator instructions also count; installation alone does not. Without a verified
+guide location, report optional setup unavailable and continue independent work.
+In unattended runs, undecided choices are off for that run; write no permanent
+optional choice or tool configuration. Do not interrupt an active slice to offer
+new tools. Missing optional tools never make required proof PASS: use an existing
+valid alternative or record the missing proof as BLOCKED.
+
 **2. PLAN.** Before planning, read the experience library's `INDEX.md` beside this file; open only the entries whose cue matches this task, cite each line you use in the plan, and treat it as a hypothesis to re-check against the files, not as a fact (see STUDY YOUR OWN WORK, step 12). Research the best current approach, then write the plan where the profile says. It records: baseline identity, the problem, acceptance criteria, non-goals, the code you actually read, the search and nearest match for every new name, affected components, proposed behaviour, the test strategy and its red command, external-contract evidence, the applicable gates, and how you will deliver and recover. Every claim about current state cites a file, a command result or a source. No detailed spec for a one-line fix.
 
 Name the temporary resources the task will create, how their ownership and safe removal will be checked, and where the final implementation report and retained evidence will live.
