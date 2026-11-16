@@ -14,6 +14,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `docs/DFLOW-PILOT.md` | read-only token telemetry, study findings, limits and next steps |
 | `docs/DFLOW-INTEGRATION.md` | active workflow discovery, native execution/waits, measurement and installation checks |
 | `docs/KERNEL-PILOT.md` | staged instruction-kernel study; full loading stays the default |
+| `docs/HEADROOM-STUDY.md` | offline Headroom 0.44.0 study, measured limits and no live adoption |
 | `docs/SESSION-PILOT.md` | opt-in fresh-session feasibility checks; no default session reset |
 | `docs/OPTIONAL-TOOLS.md` | on-demand optional-tool choices, safe setup, reuse and fallbacks |
 | `docs/skills/df-setup/SKILL.md` | optional user-only Claude Code shortcut template; not registered automatically |
@@ -50,6 +51,7 @@ The flow also requires full jobs to fit the available shared resources. Its
 | Execution engine, phases 1 and 2 | Deferred. The state store, workflow guards, job supervision, gate/review runners and owner ledger are not part of the delivered tool. |
 | Fresh sessions (B) | Pilot authorized on 2026-11-16. The [session guide](docs/SESSION-PILOT.md) requires three historical handoffs, then three complete live slices. Feasibility and adoption are separate; no default reset or savings claim. |
 | Instruction kernel (C) | Study contract prepared after B historical evaluation. Three live B slices and rule-delivery/compliance/corpus evidence remain missing. No kernel entry point or loader switch is active; the full instruction chain stays in use. See [the study](docs/KERNEL-PILOT.md). |
+| Headroom (D1) | [Offline study](docs/HEADROOM-STUDY.md) completed on saved synthetic fixtures. A fresh offline rebuild matched all 48 payload outputs. No live agent/reviewer trial or provider savings proof; Headroom stays outside normal setup. D2/D3 remain gated. |
 | Later rollout decisions | Identity separation, sandbox adoption, kernel/instruction-pack adoption, live Headroom and parallel gates keep their evidence and adoption requirements. |
 
 The pilot has not proved a reduction in model calls, tokens, cost or end-to-end
