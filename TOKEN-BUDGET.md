@@ -536,28 +536,26 @@ and bought two.
 
 ## 15. THE KERNEL EXPERIMENT
 
-**Hypothesis, not a rule.** Section 2.3 measured ~12,627 tokens of stable context resent on every one
-of 597 steps. Most of that is explanatory prose that a working agent re-reads hundreds of times.
+**Hypothesis, not a rule.** A smaller always-loaded entry point may reduce repeated
+instruction context. The 2026-11-16 owner-approved Experiment C supersedes this
+section's older hash/entry-point proposal. Evaluate Experiment B first. Keep the
+full instruction arrangement until the pilot's quality and adoption gates pass.
 
-Test a smaller always-loaded normative document - `FLOW-KERNEL.md` - carrying only the hard rules
-needed continuously:
+Prepare an isolated `FLOW-KERNEL.md` candidate only when that prerequisite is
+met. Keep universal rules always loaded and all full documents accessible.
+An isolated candidate may test on-demand loading. A stage procedure leaves normal
+always-on loading only after both Claude Code and Codex prove they load that
+procedure on demand at the needed stage. The already always-loaded copy is not
+that proof. Rules with unproved on-demand loading stay always on. There is no mandatory line cap,
+new loader or required hash protocol; step 1 already records the active revision.
 
-- step and state semantics;
-- BLOCKED behaviour;
-- the reviewer full-visibility rule;
-- review independence;
-- the re-review requirement;
-- testing requirements;
-- delivery requirements;
-- this file's governing rules;
-- **canonical absolute paths and content hashes for the full documents.**
-
-The complete documents stay available by absolute path and nothing is removed from them:
-`DELIVERY-FLOW.md`, `REVIEWING.md`, `TOKEN-BUDGET.md`.
-
-**No information and no reviewer access is removed.** The only goal is to stop explanatory prose
-being injected into every model turn. **Measure the saving - and the cost of any re-read the kernel
-forces - before making it permanent.**
+Prove instruction delivery and actual engineering compliance separately for
+every mandatory rule. Compare the same known-defect and known-clean corpus,
+review requirements and complete gates with full instructions and the candidate
+in Claude Code and Codex. Missing evidence is UNAVAILABLE, not quality proof.
+Measure complete usage, cache effects, rereads, time and overhead before normal
+adoption. Revert on critical obligation loss; keep full originals and evidence.
+See [the kernel pilot](docs/KERNEL-PILOT.md) for the staged study and rollback.
 
 ---
 
