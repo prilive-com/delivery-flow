@@ -301,8 +301,16 @@ unmeasured one; revisit only if the data supports it.
 
 ## 7. RULES FOR THE IMPLEMENTING AGENT
 
-**I1. One task, one session.** No continuing yesterday's context. Split at phase boundaries -
-research, plan, implement, verify - each a fresh session with a written handoff.
+**I1. Keep ordinary session continuation outside an explicitly chosen B pilot.**
+Do not reset a main session at stage boundaries. The 2026-11-16 owner-approved
+Experiment B supersedes the older per-stage reset order. Only inside that
+opt-in pilot, first audit three complete historical handoffs; begin the three
+new live slices only after the historical check and any reviewed repair pass.
+Use a fresh main session only after the preceding slice is complete and its
+full handoff is verified. No automatic clear, hard context cap or early
+compaction is required. Feasibility is not adoption: difficult boundaries,
+both clients and no quality regression still need proof. See
+[the session pilot](docs/SESSION-PILOT.md).
 
 **I2. AVOID REDUNDANT UNCHANGED READS.** *(This replaces revision 1's "re-read nothing you have
 already read", which was absolute and therefore unsafe.)*

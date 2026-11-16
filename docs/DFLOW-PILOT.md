@@ -249,6 +249,8 @@ Full phase-0 acceptance is still open. Next evidence is the original archive
 scope, the quality corpus, the other machine and the missing native invocation
 signals. Phase 1 also needs its scope approval, source-equivalent archive replays,
 and live shadow/opt-in checks. Phase 2, identity separation, sandbox adoption,
-new sessions, parallel gates and instruction packs keep their separate decisions.
+parallel gates and instruction packs keep their separate decisions. New main
+sessions follow the authorized opt-in [B pilot](SESSION-PILOT.md), not automatic
+stage resets. Pilot authorization does not establish feasibility or adoption.
 Rollback of this optional command is a focused source revert. It has no service,
 database or state migration to reverse.
