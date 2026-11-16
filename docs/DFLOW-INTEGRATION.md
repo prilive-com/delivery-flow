@@ -102,6 +102,8 @@ The store, executable workflow guards, native Agent attach adapter, gate/review
 runners and owner ledger proposed for the larger engine are not delivered by this
 instruction update. Their reliability and adapter prerequisites still need proof.
 The full archive/quality/second-machine acceptance remains open. Identity
-separation, sandbox adoption, fresh sessions, instruction packs and parallel gates
-keep their own decisions and evidence requirements. This is an active procedure
+separation, sandbox adoption, instruction packs and parallel gates keep their
+own decisions and evidence requirements. The [fresh-session pilot](SESSION-PILOT.md)
+is authorized as Experiment B, with historical and live checks before adoption;
+normal session continuation remains the default. This is an active procedure
 using existing capabilities, not a false claim that those components passed.

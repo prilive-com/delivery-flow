@@ -13,6 +13,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `README.md` | this map and the adoption notes |
 | `docs/DFLOW-PILOT.md` | read-only token telemetry, study findings, limits and next steps |
 | `docs/DFLOW-INTEGRATION.md` | active workflow discovery, native execution/waits, measurement and installation checks |
+| `docs/SESSION-PILOT.md` | opt-in fresh-session feasibility checks; no default session reset |
 | `docs/OPTIONAL-TOOLS.md` | on-demand optional-tool choices, safe setup, reuse and fallbacks |
 | `docs/skills/df-setup/SKILL.md` | optional user-only Claude Code shortcut template; not registered automatically |
 | `docs/RESOURCE-STORAGE.md` | portable resource budgets, existing runner choices, optional work storage and safe cleanup |
@@ -46,7 +47,8 @@ The flow also requires full jobs to fit the available shared resources. Its
 | Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
 | Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
 | Execution engine, phases 1 and 2 | Deferred. The state store, workflow guards, job supervision, gate/review runners and owner ledger are not part of the delivered tool. |
-| Later rollout decisions | Identity separation, sandbox adoption, new sessions, parallel gates and instruction packs keep their separate decisions and evidence requirements. |
+| Fresh sessions (B) | Pilot authorized on 2026-11-16. The [session guide](docs/SESSION-PILOT.md) requires three historical handoffs, then three complete live slices. Feasibility and adoption are separate; no default reset or savings claim. |
+| Later rollout decisions | Identity separation, sandbox adoption, kernel/instruction-pack adoption, live Headroom and parallel gates keep their evidence and adoption requirements. |
 
 The pilot has not proved a reduction in model calls, tokens, cost or end-to-end
 time. [The study and next steps](docs/DFLOW-PILOT.md#checks-evidence-and-next-work)
@@ -118,9 +120,11 @@ Explain each concrete setup change and use the operator's existing permission;
 ask before uncovered writes. Declining an optional integration preserves required
 tests and proof. The guide and shortcut do not hide tools already exposed by the
 client or erase current-session context. Source publication does not install them.
-Headroom is outside this setup. Fresh-session, instruction-kernel and Headroom
-experiments still need their separate decisions and quality evidence. This update
-does not establish token savings or certify every provider, client or OS.
+Headroom is outside this setup. The owner approved the separate B/C/D experiments
+on 2026-11-16, with their staged quality and adoption checks. B starts with the
+[session pilot](docs/SESSION-PILOT.md); C starts only after B is evaluated, and D is limited
+to offline D1. This does not adopt them as normal behavior, establish token savings
+or certify every provider, client or OS.
 
 ## Maintainer's current reviewer policy
 

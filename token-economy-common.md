@@ -1,5 +1,11 @@
 # Token-Efficient AI Agent System
 
+Session-boundary examples in this design are proposals, not active reset rules.
+The [delivery flow](DELIVERY-FLOW.md) and the opt-in
+[session pilot](docs/SESSION-PILOT.md) govern current work. Do not reset a main
+session at every phase. Keep full source, owner context and engineering evidence.
+
+
 ## 1. Goal
 
 Build a generic system that reduces token consumption, monetary cost, and quota failures for AI-agent work while preserving the agent's ability to inspect all information it needs.
@@ -178,7 +184,7 @@ For example:
 - Never destroy full evidence when compacting context.
 - Record token/cost telemetry.
 - A failed/incomplete agent run is never a successful run.
-- Use fresh sessions at meaningful phase boundaries.
+- Fresh-session boundaries are a hypothesis; use only the approved B pilot.
 ```
 
 Do not put long explanations in this file.
@@ -410,11 +416,11 @@ instead of 20,000 lines of passing test output.
 
 # 9. Fresh-session architecture
 
-A major saving comes from avoiding endlessly growing conversations.
+Fresh sessions may save work; that is an unproved hypothesis. The current
+[session pilot](docs/SESSION-PILOT.md) is opt-in and starts only after complete
+slices with verified handoffs. It supersedes the older phase-boundary order.
+The following diagram is historical design context, not the current procedure:
 
-Use fresh sessions at meaningful boundaries.
-
-Example:
 
 ```text
 DISCOVERY
@@ -1791,9 +1797,10 @@ Conceptually every agent request should behave like this:
 
 12. Collect provider token/cache/cost telemetry.
 
-13. Write compact handoff at phase end.
+13. At a completed slice, retain and verify the full handoff.
 
-14. Start next phase in fresh context.
+14. Continue normally outside the opt-in B pilot. Only inside that pilot,
+    start a fresh main session after the completed slice and verified handoff.
 
 15. Compare cost/quality against baseline.
 ```
