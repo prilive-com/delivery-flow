@@ -13,6 +13,8 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `README.md` | this map and the adoption notes |
 | `docs/DFLOW-PILOT.md` | read-only token telemetry, study findings, limits and next steps |
 | `docs/DFLOW-INTEGRATION.md` | active workflow discovery, native execution/waits, measurement and installation checks |
+| `docs/OPTIONAL-TOOLS.md` | on-demand optional-tool choices, safe setup, reuse and fallbacks |
+| `docs/skills/df-setup/SKILL.md` | optional user-only Claude Code shortcut template; not registered automatically |
 | `docs/RESOURCE-STORAGE.md` | portable resource budgets, existing runner choices, optional work storage and safe cleanup |
 | `dflow/` | the standard-library Python telemetry command |
 | `tests/` | synthetic tests for the telemetry reader |
@@ -21,7 +23,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 In `DELIVERY-FLOW.md`, **I** and **me** are the person who adopts the flow; **you** is the agent
 working for them.
 
-## Current state (2026-11-15)
+## Current state (2026-11-16)
 
 The delivery rules are in use. The repository also has an optional `dflow`
 telemetry tool, delivered in [PR #21](https://github.com/prilive-com/delivery-flow/pull/21).
@@ -39,6 +41,7 @@ The flow also requires full jobs to fit the available shared resources. Its
 | Active execution and measurement procedure | In the flow rules. Discover installed tooling, reuse artifacts, wait natively and measure supported completed scopes. Missing measurement is recorded without a new owner stop. Install and verify actual shared instruction copies as well as publishing the source. |
 | Resource and storage policy | Active instructions. Check the full shared budget, use a suitable existing runner, and queue heavy work when capacity is short. Docker, native controls, VMs and CI are options. An extra work disk is optional. Full tests, reviews and evidence stay required. |
 | Resource enforcement on each machine | Verify the actual provider and its scope in the local profile. The guide is not a cross-platform runner or proof of Windows, WSL or macOS runtime support. No universal zero-OOM or measured efficiency claim is made. |
+| Optional-tool setup | On-demand instructions and a user-only Claude Code template. No installer or automatic MCP/skill registration. Provider and platform readiness must be checked locally. |
 | `dflow telemetry` | Delivered, read-only and Linux-only. The portable flow does not require this optional reader on other systems. The active procedure uses supported saved logs when available. See [the pilot guide](docs/DFLOW-PILOT.md). |
 | Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
 | Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
@@ -93,6 +96,31 @@ The flow decides **whether** a step is required and **what counts as done**. You
 **how it is spelled** — commands, paths, gates, integration branch. Where they conflict on a command
 or a path, the project wins. Where the project would remove a step, the flow wins and the conflict
 is a stop.
+
+### Optional tools
+
+The full methodology works without Context7 or Playwright MCP. At first
+interactive setup, the agent offers undecided choices through the
+[optional-tools guide](docs/OPTIONAL-TOOLS.md). Save yes/no and its scope in the
+ordinary profile. Unattended undecided choices stay off for that run, with no
+permanent decline. Existing scoped operator instructions remain valid.
+
+For Codex or another agent, ask it to follow that guide from the installed
+framework location. Claude Code users may also choose to copy or link
+[`docs/skills/df-setup/`](docs/skills/df-setup/) into the client's supported skills
+directory, then use `/df-setup`. This directory in the repository is only a
+template. Prefer the user-level directory for a shared Claude installation;
+use a project directory only when the operator chooses it. Check the client's
+current [skill instructions](https://code.claude.com/docs/en/skills); preserve an
+existing same-named skill. Do not register the Claude-only template as a Codex skill.
+
+Explain each concrete setup change and use the operator's existing permission;
+ask before uncovered writes. Declining an optional integration preserves required
+tests and proof. The guide and shortcut do not hide tools already exposed by the
+client or erase current-session context. Source publication does not install them.
+Headroom is outside this setup. Fresh-session, instruction-kernel and Headroom
+experiments still need their separate decisions and quality evidence. This update
+does not establish token savings or certify every provider, client or OS.
 
 ## Maintainer's current reviewer policy
 
