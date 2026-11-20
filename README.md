@@ -26,7 +26,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 In `DELIVERY-FLOW.md`, **I** and **me** are the person who adopts the flow; **you** is the agent
 working for them.
 
-## Current state (2026-11-16)
+## Current state (2026-11-20)
 
 The delivery rules are in use. The repository also has an optional `dflow`
 telemetry tool, delivered in [PR #21](https://github.com/prilive-com/delivery-flow/pull/21).
@@ -49,8 +49,8 @@ The flow also requires full jobs to fit the available shared resources. Its
 | Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
 | Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
 | Execution engine, phases 1 and 2 | Deferred. The state store, workflow guards, job supervision, gate/review runners and owner ledger are not part of the delivered tool. |
-| Fresh sessions (B) | Pilot authorized on 2026-11-16. The [session guide](docs/SESSION-PILOT.md) requires three historical handoffs, then three complete live slices. Feasibility and adoption are separate; no default reset or savings claim. |
-| Instruction kernel (C) | Study contract prepared after B historical evaluation. Three live B slices and rule-delivery/compliance/corpus evidence remain missing. No kernel entry point or loader switch is active; the full instruction chain stays in use. See [the study](docs/KERNEL-PILOT.md). |
+| Fresh sessions (B) | The feasibility pilot completed its three planned live slices. The [session guide](docs/SESSION-PILOT.md) records the handoff lesson, partial measurements and next comparison checks. Session continuation stays the default. |
+| Instruction kernel (C) | The [study procedure](docs/KERNEL-PILOT.md) is ready. Review the B result against its open quality and adoption checks before starting an isolated trial. The full instruction chain stays active while the study awaits rule delivery, compliance and quality evidence across both clients. |
 | Headroom (D1) | [Offline study](docs/HEADROOM-STUDY.md) completed on saved synthetic fixtures. A fresh offline rebuild matched all 48 payload outputs. No live agent/reviewer trial or provider savings proof; Headroom stays outside normal setup. D2/D3 remain gated. |
 | Later rollout decisions | Identity separation, sandbox adoption, kernel/instruction-pack adoption, live Headroom and parallel gates keep their evidence and adoption requirements. |
 
