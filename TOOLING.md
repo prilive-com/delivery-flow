@@ -23,7 +23,7 @@ and what you lose without it.
 
 ## Choosing optional tools
 
-Context7 and Playwright MCP are optional providers. Follow the single
+Context7, Playwright MCP and Go code intelligence are optional. Follow the single
 [setup procedure](docs/OPTIONAL-TOOLS.md) from the framework location in the
 ordinary profile. Interactive means the operator can answer in the agent
 interface, regardless of shell TTY presence. Offer it at first interactive setup
@@ -31,8 +31,10 @@ for undecided choices, or
 run it on operator request. Claude Code can also use `/df-setup`, **if installed**.
 Codex and other agents read the same procedure directly.
 
-Keep three facts separate: **configured** in the client, **operator-enabled** for
-a stated scope, and **usable** after a successful real capability operation.
+Record **configured** in the client, **operator-enabled** for the stated scope,
+and **usable** after a successful real operation. For Go, also record
+**client-enabled** when the client loads the integration under its settings
+and trust.
 A listing or connection alone leaves usability unverified. Read passive metadata
 before consent; do not launch or health-check unchosen servers.
 
@@ -42,6 +44,17 @@ does not cover. Leave operator-managed global tooling intact after a decline.
 The client may still expose it; this procedure does not unload client metadata.
 All existing **Without it** rules still apply. Required documentation checks and
 real browser proof need a valid alternative or remain BLOCKED.
+
+## Go code intelligence — optional
+
+The official gopls binary supports native code intelligence. Claude Code
+terminal uses the official gopls LSP plugin from an already configured official
+marketplace. A trusted Codex project can use the Go team's experimental stdio
+MCP. Check the [Go support guide](docs/GO-SUPPORT.md) for the project-only choice,
+supported versions, client setup and proof.
+
+**Without it:** use the pinned Go compiler, tests, official version-exact
+documentation and source navigation. Keep each required Go gate and proof.
 
 ## Documentation lookup — step 3
 
@@ -221,6 +234,11 @@ family and the reason, and continue with what is left. The floor is one.
 Include optional-tool choices and their client/user/host/project scope, dated
 readiness, decision source, and exact owned configuration changes in that same
 profile; use the setup guide only when needed. Do not create another registry.
+
+For Go work, read the [Go gate catalog](docs/GO-SUPPORT.md#project-gates) during
+steps 1 and 2, including when assistance is declined, undecided or unavailable.
+Keep existing project gates. Choose and record appropriate new-project checks
+within normal authorized work.
 
 Not a copy of this file. The answers for **your** machine:
 

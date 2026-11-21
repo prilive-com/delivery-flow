@@ -17,6 +17,7 @@ independent reviewer rules, and token-budget rules that cut repetition while kee
 | `docs/HEADROOM-STUDY.md` | offline Headroom 0.44.0 study, measured limits and no live adoption |
 | `docs/SESSION-PILOT.md` | opt-in fresh-session feasibility checks; no default session reset |
 | `docs/OPTIONAL-TOOLS.md` | on-demand optional-tool choices, safe setup, reuse and fallbacks |
+| [`docs/GO-SUPPORT.md`](docs/GO-SUPPORT.md) | project-only Go 1.27+ assistance, normal Go gates and release checks |
 | `docs/skills/df-setup/SKILL.md` | optional user-only Claude Code shortcut template; not registered automatically |
 | `docs/RESOURCE-STORAGE.md` | portable resource budgets, existing runner choices, optional work storage and safe cleanup |
 | `dflow/` | the standard-library Python telemetry command |
@@ -44,7 +45,7 @@ The flow also requires full jobs to fit the available shared resources. Its
 | Active execution and measurement procedure | In the flow rules. Discover installed tooling, reuse artifacts, wait natively and measure supported completed scopes. Missing measurement is recorded without a new owner stop. Install and verify actual shared instruction copies as well as publishing the source. |
 | Resource and storage policy | Active instructions. Check the full shared budget, use a suitable existing runner, and queue heavy work when capacity is short. Docker, native controls, VMs and CI are options. An extra work disk is optional. Full tests, reviews and evidence stay required. |
 | Resource enforcement on each machine | Verify the actual provider and its scope in the local profile. The guide is not a cross-platform runner or proof of Windows, WSL or macOS runtime support. No universal zero-OOM or measured efficiency claim is made. |
-| Optional-tool setup | On-demand instructions and a user-only Claude Code template. No installer or automatic MCP/skill registration. Provider and platform readiness must be checked locally. |
+| Optional-tool setup | On-demand Context7, Playwright MCP and Go 1.27+ setup procedures. Go assistance is project-only. Check real client and platform readiness in each project. The user-only Claude Code shortcut remains an optional template. |
 | `dflow telemetry` | Delivered, read-only and Linux-only. The portable flow does not require this optional reader on other systems. The active procedure uses supported saved logs when available. See [the pilot guide](docs/DFLOW-PILOT.md). |
 | Full phase-0 acceptance | Open. The full archive baseline, quality corpus, second-machine checks and missing native Agent completion evidence are still needed. |
 | Native Agent review adapter | Study only. Completion, cancellation and parent-restart gaps remain. |
@@ -105,11 +106,16 @@ is a stop.
 
 ### Optional tools
 
-The full methodology works without Context7 or Playwright MCP. At first
-interactive setup, the agent offers undecided choices through the
+The full methodology works without Context7, Playwright MCP or Go assistance.
+At first interactive setup, the agent offers undecided choices through the
 [optional-tools guide](docs/OPTIONAL-TOOLS.md). Save yes/no and its scope in the
 ordinary profile. Unattended undecided choices stay off for that run, with no
 permanent decline. Existing scoped operator instructions remain valid.
+
+[Go 1.27+ assistance](docs/GO-SUPPORT.md) needs an explicit project-only choice.
+Declining it leaves ordinary Go development and required gates in place. Go
+guidance loads on demand from this Git repository. Check real LSP or MCP
+behavior in the intended client before relying on it.
 
 For Codex or another agent, ask it to follow that guide from the installed
 framework location. Claude Code users may also choose to copy or link
