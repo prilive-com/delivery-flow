@@ -1,8 +1,11 @@
 # Optional Delivery Flow tools
 
 Use this procedure only for setup or relevant selected-tool work. The initial
-choices are **Context7** for documentation lookup and **Playwright MCP** for
-browser interaction. Headroom is outside this setup. The full engineering rules
+choices are **Context7** for documentation lookup, **Playwright MCP** for
+browser interaction, and **Go 1.27+ assistance**. Go assistance is project-only.
+Go projects choose and run their ordinary gates independently through
+[Go project planning](GO-SUPPORT.md#project-gates). Headroom is outside this
+setup. The full engineering rules
 and the **Without it** alternatives stay in [TOOLING.md](../TOOLING.md).
 There is no installer, registry, hook or background service here.
 
@@ -22,7 +25,9 @@ or overwrite preferences. Continue independent work through valid existing route
 Keep these facts separate in the existing profile:
 
 - **Operator-enabled:** explicit yes, explicit no, or undecided.
-- **Configured:** the client has a server entry; this is not consent.
+- **Configured:** the client has a server or plugin entry; this is not consent.
+- **Client-enabled:** for Go, observe whether the client actually loaded the
+  integration under its effective settings and trust.
 - **Usable:** a real capability operation succeeded on the stated interface/date.
   A listing, connection or handshake alone leaves it unverified.
 
@@ -48,9 +53,31 @@ normal instruction authority rules.
 Interactive means that the operator can answer in the agent interface, not that
 the shell has a TTY. At first interactive initialization, offer only undecided
 choices. For example: “Use Context7 for documentation lookup?” and “Use
-Playwright MCP for browser proof?” Ask whether **each yes or no** applies to this
-project or this user/client on this machine, unless valid prior authorization
-already states that scope. Group the questions when helpful.
+Playwright MCP for browser proof?” For Context7 and Playwright, ask whether
+**each yes or no** applies to this project or this user/client on this machine,
+unless valid prior authorization already states that scope. Group the questions
+when helpful. Include the Go choice only with its project-only scope and effects.
+
+> Will this project use Go (Golang), version 1.27 or newer, and enable official
+> Go development assistance for this project only? (yes / no)
+>
+> A yes allows me to inspect this project's Go modules, install an exact-version
+> gopls binary for the current OS user if needed, set up the official Claude
+> project LSP plugin or Go MCP for Codex at project scope for the clients you use,
+> add small project-local guidance and references, and verify real operation. It
+> may write project files and per-user tool or plugin caches and download tools
+> or modules. Tracked project settings and guidance can be shared with other
+> users of this repository. Existing Go and dependency pins, user and managed
+> settings, shell settings, other projects, and required gates stay under
+> their existing rules.
+> Any uncovered user-level setting or other write needs specific permission.
+
+Save a covering Go answer as **Operator-enabled** with this project as its scope
+and record the decision's source and date. A covering yes needs no second
+blanket confirmation. An old bare yes or a machine-only answer leaves Go
+undecided until reconciled under this procedure. An explicit project no declines
+optional Go assistance. Ordinary Go development and required proof continue. A
+reusable user-level binary or cache carries no consent to another project.
 
 A blank scope or preselected machine control is not a new scoped decision.
 Without an explicit or already authorized scope, keep the new choice undecided
@@ -80,8 +107,13 @@ at every task. A useful real call can also be the readiness check.
 
 If installation is needed, read the current official instructions for the actual
 client/platform: [Context7](https://github.com/upstash/context7) or
-[Playwright MCP](https://github.com/microsoft/playwright-mcp). Inspect the intended
-writes and side effects first. Explain the concrete route, entries/files and
+[Playwright MCP](https://github.com/microsoft/playwright-mcp). For Go, use the
+[Go support guide](GO-SUPPORT.md) and verify the applicable contracts for
+[gopls MCP](https://go.dev/gopls/features/mcp),
+[Claude code intelligence](https://code.claude.com/docs/en/plugins/code-intelligence),
+[Claude plugin scope](https://code.claude.com/docs/en/plugins/cli-reference) or
+[Codex project configuration](https://learn.chatgpt.com/docs/config-file/config-reference).
+Inspect the intended writes and side effects first. Explain the concrete route, entries/files and
 scope. Obtain permission for anything not already covered; do not ask a second
 blanket question after an exact operation was authorized. A vague “use it” does
 not authorize an unexplained machine-wide installation.
@@ -108,7 +140,12 @@ the requested scope, keep that operation unavailable; do not widen it silently.
 
 Verify a harmless **real operation** on the chosen capability. Context7 must
 answer a useful resolve/docs request. Playwright MCP must perform a real browser
-action. Status alone is not usable. If auth, quota, setup or network fails, keep
+action. Claude Go LSP needs a real post-edit type diagnostic and a verified
+restore in a separate fixture with equivalent project-scoped enablement.
+Codex or separately enabled Claude Go MCP needs
+a read-only semantic call with useful data for the intended Go workspace.
+A plugin listing, registration or connection leaves this proof unverified.
+If auth, quota, setup or network fails, keep
 the operator's yes and record the precise unavailable reason. Use an existing
 fallback; do not claim success, reinstall a quota-limited server, or start a retry
 loop. A setup browser check does not prove an application's UI change.
@@ -139,6 +176,8 @@ to apply optional settings.
 In the existing profile record the explicit decision/source/date and full scope;
 configured state; usable yes/no/unverified, interface/date and evidence; known
 version; exact Delivery Flow-created entries/files and their before/after evidence.
+For Go also record client-enabled status and use `PENDING_WORKSPACE` when the
+project lacks a module for the semantic check.
 Keep secrets out. Record an incomplete reply only as ordinary private evidence,
 not a permanent choice. Explain changes, preserved items, failures, and whether
 the client needs a later reconnection/new session.
