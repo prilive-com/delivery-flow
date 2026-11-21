@@ -155,6 +155,16 @@ one family never fills both seats. Do not wait for a reset or ask for approval.
 Return each preferred reviewer before its next launch after its own confirmed
 full reset to 100%; keep any valid review already running or completed.
 
+**Normal AGY review (owner request, 2026-11-21).** In the newest eligible Gemini generation, choose the
+strongest eligible single Gemini model for deep coding and reasoning. Use
+[Google's model guidance](https://antigravity.google/docs/models) and the live
+account catalogue. Choose the highest
+advertised effort above `medium` and below that model's ceiling. Use `medium`
+when it is advertised below the ceiling and no tier fits between them. If a model offers
+no usable tier, check the next eligible model in that generation before using
+the existing fallback rules. At launch, resolve the exact catalogue entry.
+Check the reported model and tier and the native completion result.
+
 **Last AGY model fallback (owner update, 2026-10-31).** If the normal AGY model
 is unavailable and no other eligible model can fill a missing review seat, try
 **Gemini 3.8 Flash · high** through AGY, with the model and tier set explicitly.
